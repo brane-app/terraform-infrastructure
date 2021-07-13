@@ -1,11 +1,13 @@
 resource "aws_ecs_service" "service" {
-  name = var.service_name
+  name = "${var.prefix}-${var.service_name}"
 
   cluster              = var.cluster_arn
   task_definition      = var.task_definition_arn
   desired_count        = var.desired_count
   launch_type          = "ECS"
   force_new_deployment = true
+
+  tags = { "Name" : "${var.prefix}-${var.family_name}" }
 
   load_balancer {
     container_name   = var.service_container_name
