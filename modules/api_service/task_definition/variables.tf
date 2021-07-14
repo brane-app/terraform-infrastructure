@@ -46,6 +46,12 @@ variable "execution_role_arn" {
   type        = string
 }
 
+variable "host_port" {
+  description = "Port to expose to the host, forwarding to container_port"
+  type        = number
+  default     = 0
+}
+
 variable "log_retention" {
   description = "Time in days to retain cloudwatch logs"
   type        = number

@@ -34,7 +34,7 @@ module "container" {
   port_mappings = [
     {
       containerPort = var.container_port
-      hostPort      = 80
+      hostPort      = var.host_port
       protocol      = "tcp"
     }
   ]
