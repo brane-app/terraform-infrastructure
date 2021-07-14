@@ -12,7 +12,7 @@ resource "aws_ecs_service" "service" {
   load_balancer {
     container_name   = var.service_container_name
     container_port   = var.service_container_port
-    target_group_arn = var.target_group_arn
+    target_group_arn = aws_lb_target_group.http.arn
   }
 
   network_configuration {

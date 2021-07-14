@@ -1,45 +1,55 @@
-variable "cluster_arn" {
-  description = "" // TODO
+variable "balancer_arn" {
+  description = "ARN of the load balancer infront of this service"
   type        = string
+}
 
+variable "cluster_arn" {
+  description = "ARN of the cluster to deploy this to"
+  type        = string
 }
 
 variable "desired_count" {
-  description = "" // TODO
+  description = "Number of services to run"
   type        = number
+  default     = 1
 }
 
-variable "security_groups" {
-  description = "" // TODO
-  type        = set(string)
-}
-
-variable "service_container_name" {
-  description = "" // TODO
+variable "host_vpc_id" {
+  description = "ID of a VPC to deploy resources in"
   type        = string
 }
 
+variable "listener_path" {
+  description = "Path to listen for requests to this service on"
+  type        = string
+}
+
+variable "name" {
+  description = "The name of this service"
+  type        = string
+}
+
+variable "security_groups" {
+  description = "Collection of security groups to attach to this service"
+  type        = set(string)
+}
+
 variable "service_container_port" {
-  description = "" // TODO
+  description = "Port that this container listens on for requests"
   type        = number
 }
 
 variable "service_name" {
-  description = "" // TODO
+  description = "Name of this service"
   type        = string
 }
 
 variable "subnets" {
-  description = "" // TODO
+  description = "Collection of subnets that this service may be deployed in"
   type        = set(string)
 }
 
-variable "target_group_arn" {
-  description = "" // TODO
-  type        = string
-}
-
 variable "task_definition_arn" {
-  description = "" // TODO
+  description = "ARN of the task definition to use when deploying this service"
   type        = string
 }
