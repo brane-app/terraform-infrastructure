@@ -5,7 +5,7 @@ resource "aws_ecs_service" "service" {
   cluster              = var.cluster_arn
   task_definition      = var.task_definition
   desired_count        = var.desired_count
-  launch_type          = "ECS"
+  launch_type          = "EC2"
   force_new_deployment = true
 
   load_balancer {
