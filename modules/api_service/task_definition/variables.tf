@@ -27,6 +27,26 @@ variable "container_secrets" {
   default     = []
 }
 
+variable "database_username" {
+  description = "Username of the database to connect to"
+  type        = string
+}
+
+variable "database_password" {
+  description = "Password of the database to connect to"
+  type        = string
+}
+
+variable "database_endpoint" {
+  description = "Endpoint of the database to connect to"
+  type        = string
+}
+
+variable "database_name" {
+  description = "Name of the database to connect to"
+  type        = string
+}
+
 variable "execution_role_arn" {
   description = "ARN of an execution role to attach to instances of this task"
   type        = string
