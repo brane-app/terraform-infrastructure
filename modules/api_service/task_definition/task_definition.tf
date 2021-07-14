@@ -1,15 +1,15 @@
 data "aws_region" "current" {}
 
 resource "aws_ecs_task_definition" "definition" {
-  family                   = "${var.prefix}-${var.family_name}"
+  family = "${var.prefix}-service-${var.name}"
+  tags   = { "Name" : "${var.prefix}-service-${var.name}" }
+
   cpu                      = var.task_cpu
   memory                   = var.task_ram
   execution_role_arn       = var.execution_role_arn
   container_definitions    = module.container.json_map_encoded_list
   network_mode             = "bridge"
   requires_compatibilities = ["EC2"]
-
-  tags = { "Name" : "${var.prefix}-${var.family_name}" }
 }
 
 module "container" {
