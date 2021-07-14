@@ -31,9 +31,9 @@ variable "host_vpc_id" {
   type        = string
 }
 
-variable "listener_path" {
+variable "listener_paths" {
   description = "Path to listen for requests to this service on"
-  type        = string
+  type        = set(string)
 }
 
 variable "name" {
