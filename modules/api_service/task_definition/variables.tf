@@ -1,6 +1,7 @@
 variable "container_environment" {
   description = "List of container environment variables"
   type        = list(object({ name = string, value = string }))
+  default     = []
 }
 
 variable "container_image" {
@@ -23,6 +24,7 @@ variable "container_port" {
 variable "container_secrets" {
   description = "Liust of container environment secrets"
   type        = list(object)
+  default     = []
 }
 
 variable "execution_role_arn" {
@@ -44,9 +46,11 @@ variable "name" {
 variable "task_cpu" {
   description = "CPU allowance for instances of this task"
   type        = number
+  default     = 128
 }
 
 variable "task_ram" {
   description = "RAM allowance for instances of this task"
   type        = number
+  default     = 64
 }
