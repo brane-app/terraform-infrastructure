@@ -13,10 +13,4 @@ resource "aws_ecs_service" "service" {
     container_port   = var.service_container_port
     target_group_arn = aws_lb_target_group.http.arn
   }
-
-  network_configuration {
-    assign_public_ip = false
-    security_groups  = var.security_groups
-    subnets          = var.subnets
-  }
 }

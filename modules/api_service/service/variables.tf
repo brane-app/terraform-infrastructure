@@ -46,20 +46,10 @@ variable "name" {
   type        = string
 }
 
-variable "security_groups" {
-  description = "Collection of security groups to attach to this service"
-  type        = set(string)
-}
-
 variable "service_container_port" {
   description = "Port that this container listens on for requests"
   type        = number
   default     = 80
-}
-
-variable "subnets" {
-  description = "Collection of subnets that this service may be deployed in"
-  type        = set(string)
 }
 
 variable "target_group_port" {
