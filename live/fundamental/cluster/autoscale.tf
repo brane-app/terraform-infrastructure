@@ -57,7 +57,7 @@ resource "aws_launch_configuration" "cluster_node" {
 
   security_groups = [
     data.terraform_remote_state.security.outputs.group_database_ingress_id,
-    data.terraform_remote_state.security.outputs.group_service_id,
+    data.terraform_remote_state.security.outputs.group_ecs_node_id,
   ]
 }
 

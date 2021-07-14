@@ -12,9 +12,9 @@ resource "aws_security_group" "database_ingress" {
   vpc_id = data.terraform_remote_state.network.outputs.vpc_id
 }
 
-resource "aws_security_group" "service" {
-  name = "${var.prefix}-service"
-  tags = { "Name" : "${var.prefix}-service" }
+resource "aws_security_group" "ecs-node" {
+  name = "${var.prefix}-ecs-node"
+  tags = { "Name" : "${var.prefix}-ecs-node" }
 
   vpc_id = data.terraform_remote_state.network.outputs.vpc_id
 }
@@ -27,7 +27,7 @@ resource "aws_security_group_rule" "service_outbound" {
   protocol          = "-1"
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.service.id
+  security_group_id = aws_security_group.ecs-node.id
 }
 
 resource "aws_security_group_rule" "service_ssh" {
@@ -38,7 +38,7 @@ resource "aws_security_group_rule" "service_ssh" {
   protocol          = "TCP"
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.service.id
+  security_group_id = aws_security_group.ecs-node.id
 }
 
 resource "aws_security_group_rule" "service_ephemeral_inbound" {
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "service_ephemeral_inbound" {
   protocol                 = "TCP"
   type                     = "ingress"
   source_security_group_id = aws_security_group.balancer.id
-  security_group_id        = aws_security_group.service.id
+  security_group_id        = aws_security_group.ecs-node.id
 }
 
 
@@ -72,6 +72,6 @@ resource "aws_security_group_rule" "outbond" {
   from_port                = 32768
   protocol                 = "TCP"
   type                     = "egress"
-  source_security_group_id = aws_security_group.service.id
+  source_security_group_id = aws_security_group.ecs-node.id
   security_group_id        = aws_security_group.balancer.id
 }
