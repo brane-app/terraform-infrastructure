@@ -14,9 +14,10 @@ variable "container_module_version_pin" {
   default     = "~> 0"
 }
 
-variable "container_name" {
-  description = "Name to give the container"
-  type        = string
+variable "container_port" {
+  description = "Port where http stuff is served, inside the container"
+  type        = number
+  default     = 8000
 }
 
 variable "container_secrets" {
@@ -29,8 +30,14 @@ variable "execution_role_arn" {
   type        = string
 }
 
-variable "family_name" {
-  description = "Name of the definition family"
+variable "log_retention" {
+  description = "Time in days to retain cloudwatch logs"
+  type        = number
+  default     = 7
+}
+
+variable "name" {
+  description = "The name of this service"
   type        = string
 }
 

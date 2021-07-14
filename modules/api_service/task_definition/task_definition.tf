@@ -1,3 +1,5 @@
+data "aws_regtion" "current" {}
+
 resource "aws_ecs_task_definition" "definition" {
   family                   = "${var.prefix}-${var.family_name}"
   cpu                      = var.task_cpu
@@ -19,6 +21,32 @@ module "container" {
   container_cpu            = var.task_cpu
   container_memory         = var.task_ram
 
-  secrets     = var.container_secrets
+  log_configuration = {
+    logDriver = "awslogs"
+
+    options = {
+      "awslogs-group"         = aws_cloudwatch_log_group.logs.name,
+      "awslogs-stream-prefix" = "${var.prefix}-service-${var.name}",
+      "awslogs-region"        = data.aws_regtion.current.name,
+    }
+  }
+
+  port_mappings = [
+    {
+      containerPort = var.container_port
+      hostPort      = 80
+      protocol      = "tcp"
+    }
+  ]
+
   environment = var.container_environment
+  secrets = concat(
+    [
+      {
+        name      = "DATABASE_CONNECTION",
+        valueFrom = aws_ssm_parameter.connection.arn,
+      }
+    ],
+    var.container_secrets,
+  )
 }
