@@ -2,7 +2,7 @@ resource "aws_lb_target_group" "http" {
   name = "${var.prefix}-${var.name}"
   tags = { "Name" : "${var.prefix}-${var.name}" }
 
-  port        = var.service_container_port
+  port        = var.target_group_port
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = var.host_vpc_id

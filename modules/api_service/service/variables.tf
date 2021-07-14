@@ -62,6 +62,12 @@ variable "subnets" {
   type        = set(string)
 }
 
+variable "target_group_port" {
+  description = "Port that the target group should listen to"
+  type        = number
+  default     = 80
+}
+
 variable "task_definition" {
   description = "ARN or family:revision of the task definition to use when deploying this service"
   type        = string
