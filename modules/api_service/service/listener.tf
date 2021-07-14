@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "http" {
 }
 
 resource "aws_lb_listener_rule" "rule" {
-  listener_arn = var.balancer_arn
+  listener_arn = var.listener_arn
 
   action {
     type             = "forward"

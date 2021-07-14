@@ -31,6 +31,11 @@ variable "host_vpc_id" {
   type        = string
 }
 
+variable "listener_arn" {
+  description = "ARN of the load balance listener to attach to"
+  type        = string
+}
+
 variable "listener_paths" {
   description = "Path to listen for requests to this service on"
   type        = set(string)
