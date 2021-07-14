@@ -27,7 +27,7 @@ module "container" {
     options = {
       "awslogs-group"         = aws_cloudwatch_log_group.logs.name,
       "awslogs-stream-prefix" = "${var.prefix}-service-${var.name}",
-      "awslogs-region"        = data.aws_regtion.current.name,
+      "awslogs-region"        = data.aws_region.current.name,
     }
   }
 
