@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "database" {
   name       = "${var.prefix}-services"
-  subnet_ids = data.terraform_remote_state.cluster.outputs.node_subnet
+  subnet_ids = data.terraform_remote_state.cluster.outputs.cluster_instance_subnet
 }
 
 resource "aws_db_instance" "database" {
