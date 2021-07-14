@@ -1,4 +1,4 @@
-data "aws_regtion" "current" {}
+data "aws_region" "current" {}
 
 resource "aws_ecs_task_definition" "definition" {
   family                   = "${var.prefix}-${var.family_name}"
