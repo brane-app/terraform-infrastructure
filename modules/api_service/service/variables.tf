@@ -37,11 +37,7 @@ variable "security_groups" {
 variable "service_container_port" {
   description = "Port that this container listens on for requests"
   type        = number
-}
-
-variable "service_name" {
-  description = "Name of this service"
-  type        = string
+  default     = 80
 }
 
 variable "subnets" {
@@ -49,7 +45,7 @@ variable "subnets" {
   type        = set(string)
 }
 
-variable "task_definition_arn" {
-  description = "ARN of the task definition to use when deploying this service"
+variable "task_definition" {
+  description = "ARN or family:revision of the task definition to use when deploying this service"
   type        = string
 }
