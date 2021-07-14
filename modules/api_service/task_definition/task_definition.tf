@@ -17,7 +17,7 @@ module "container" {
   version                  = "~> 0"
   readonly_root_filesystem = true
   container_image          = var.container_image
-  container_name           = "${var.prefix}-${var.container_name}"
+  container_name           = "${var.prefix}-service-${var.name}"
   container_cpu            = var.task_cpu
   container_memory         = var.task_ram
 
