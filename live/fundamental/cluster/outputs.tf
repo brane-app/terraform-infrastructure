@@ -6,6 +6,6 @@ output "cluster_name" {
   value = aws_ecs_cluster.cluster.name
 }
 
-output "node_subnet" {
+output "cluster_instance_subnet" {
   value = aws_autoscaling_group.cluster_node.vpc_zone_identifier
 }

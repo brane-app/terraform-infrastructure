@@ -29,7 +29,9 @@ data "template_file" "node_user_data" {
 }
 
 resource "aws_iam_role" "cluster_node" {
-  name               = "${var.prefix}-node"
+  name = "${var.prefix}-ecs-service-instance"
+  tags = { "Name" : "${var.prefix}-ecs-service-instance" }
+
   assume_role_policy = data.aws_iam_policy_document.cluster_node.json
 }
 
@@ -39,12 +41,16 @@ resource "aws_iam_role_policy_attachment" "cluster_node" {
 }
 
 resource "aws_iam_instance_profile" "cluster_node" {
-  name = "${var.prefix}-node"
+  name = "${var.prefix}-ecs-service-instance"
+  tags = { "Name" : "${var.prefix}-ecs-service-instance" }
+
   role = aws_iam_role.cluster_node.name
 }
 
 resource "aws_key_pair" "cluster_node" {
-  key_name   = "${var.prefix}-node"
+  key_name = "${var.prefix}-ecs-service-instance"
+  tags     = { "Name" : "${var.prefix}-ecs-service-instance" }
+
   public_key = var.public_key
 }
 
@@ -62,7 +68,15 @@ resource "aws_launch_configuration" "cluster_node" {
 }
 
 resource "aws_autoscaling_group" "cluster_node" {
-  name                 = "${var.prefix}-node"
+  name = "${var.prefix}-ecs-service-instance"
+  tags = [
+    {
+      key                 = "Name"
+      value               = "${var.prefix}-ecs-service-instance"
+      propagate_at_launch = true
+    }
+  ]
+
   launch_configuration = aws_launch_configuration.cluster_node.name
 
   desired_capacity          = 1
