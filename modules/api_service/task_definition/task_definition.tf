@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "definition" {
 
 module "container" {
   source                   = "cloudposse/ecs-container-definition/aws"
-  version                  = var.container_module_version_pin
+  version                  = "~> 0"
   readonly_root_filesystem = true
   container_image          = var.container_image
   container_name           = "${var.prefix}-${var.container_name}"

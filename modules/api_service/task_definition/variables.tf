@@ -9,12 +9,6 @@ variable "container_image" {
   type        = string
 }
 
-variable "container_module_version_pin" {
-  description = "Version to pin the CloudPosse container module at"
-  type        = string
-  default     = "~> 0"
-}
-
 variable "container_port" {
   description = "Port where http stuff is served, inside the container"
   type        = number
