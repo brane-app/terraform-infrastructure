@@ -2,7 +2,7 @@ resource "aws_lb" "balancer" {
   internal           = false
   load_balancer_type = "application"
   name               = "${var.prefix}-services"
-  security_groups    = [aws_security_group.balancer.id]
+  security_groups    = [data.terraform_remote_state.security.outputs.group_balancer_id]
   subnets            = data.terraform_remote_state.network.outputs.subnet_ids
 }
 

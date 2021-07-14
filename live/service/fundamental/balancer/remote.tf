@@ -8,3 +8,14 @@ data "terraform_remote_state" "network" {
     profile = "gas"
   }
 }
+
+data "terraform_remote_state" "security" {
+  backend = "s3"
+
+  config = {
+    bucket  = "imonke-terraform"
+    key     = "${var.prefix}/fundamental/security.tfstate"
+    region  = "us-east-1"
+    profile = "gas"
+  }
+}
