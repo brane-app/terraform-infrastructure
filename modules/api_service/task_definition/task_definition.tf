@@ -47,6 +47,12 @@ module "container" {
         valueFrom = aws_ssm_parameter.connection.arn,
       }
     ],
+    [
+      {
+        name      = "MONKEBASE_CONNECTION",
+        valueFrom = aws_ssm_parameter.connection.arn,
+      }
+    ],
     var.container_secrets,
   )
 }
