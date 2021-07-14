@@ -17,7 +17,7 @@ variable "container_port" {
 
 variable "container_secrets" {
   description = "Liust of container environment secrets"
-  type        = list(object)
+  type        = list(object({ name = string, valueFrom = string }))
   default     = []
 }
 
