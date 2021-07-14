@@ -14,6 +14,18 @@ variable "desired_count" {
   default     = 1
 }
 
+variable "health_check_path" {
+  description = "Path to make requests to when doing health checks"
+  type        = string
+  default     = "/"
+}
+
+variable "health_check_matcher" {
+  description = "Health check matchers to interpret as healthy"
+  type        = string
+}
+
+
 variable "host_vpc_id" {
   description = "ID of a VPC to deploy resources in"
   type        = string
