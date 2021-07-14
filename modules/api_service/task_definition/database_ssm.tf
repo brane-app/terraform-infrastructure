@@ -4,6 +4,6 @@ locals {
 
 resource "aws_ssm_parameter" "connection" {
   name  = "/${var.prefix}/service/${var.name}/DATABASE_CONNECTION"
-  type  = "SecretString"
+  type  = "SecureString"
   value = local.database_connection
 }
