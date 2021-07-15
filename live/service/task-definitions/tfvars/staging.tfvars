@@ -1,14 +1,14 @@
 prefix = "staging"
 
-service_names = [
-  "auth",
-  "bans",
-  "check",
-  "content-create",
-  "content-giver",
-  "feed",
-  "report",
-  "self",
-  "user-create",
-  "user-giver",
-]
+service_map = {
+  "auth" : { path_prefix = "/auth" },
+  "bans" : { path_prefix = "/bans" },
+  "check" : { path_prefix = "/check" },
+  "content-create" : { path_prefix = "/content" },
+  "content-giver" : { path_prefix = "/content" },
+  "feed" : { path_prefix = "/feed" },
+  "report" : { path_prefix = "/report" },
+  "self" : { path_prefix = "/self" },
+  "user-create" : { path_prefix = "/user" },
+  "user-giver" : { path_prefix = "/user" },
+}

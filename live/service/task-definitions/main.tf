@@ -1,11 +1,12 @@
 module "task_definition" {
-  for_each = var.service_names
+  for_each = var.service_map
   source   = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/api_service/task_definition?ref=master"
 
-  name   = each.value
+  name   = each.key
   prefix = var.prefix
 
-  container_image = "gastrodon/imonke-${each.value}-service"
+  container_image = "gastrodon/imonke-${each.key}-service"
+  path_prefix     = each.value.path_prefix
 
   execution_role_arn = data.terraform_remote_state.execution-role.outputs.task_execution_role_arn
 
