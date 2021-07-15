@@ -24,5 +24,9 @@ resource "aws_lb_listener_rule" "rule" {
     path_pattern {
       values = var.listener_paths
     }
+
+    http_request_method {
+      values = var.listener_methods
+    }
   }
 }
