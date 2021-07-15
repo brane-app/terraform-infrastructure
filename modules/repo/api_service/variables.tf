@@ -17,6 +17,6 @@ variable "repo_visibility" {
 }
 
 variable "service_name" {
-  description = "Name of the servce for which a repo is being created"
+  description = "Name of the service for which a repo is being created"
   type        = string
 }
