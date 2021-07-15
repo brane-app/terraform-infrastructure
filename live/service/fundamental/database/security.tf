@@ -1,9 +1,13 @@
 resource "aws_security_group" "database" {
-  name   = "${var.prefix}-service-database"
+  name = "${var.prefix}-service-database"
+  tags = { "Name" : "${var.prefix}-service-database" }
+
   vpc_id = data.terraform_remote_state.network.outputs.vpc_id
 }
 
 resource "aws_security_group_rule" "database_inbound" {
+  description = "Database inbound"
+
   to_port                  = 3306
   from_port                = 3306
   protocol                 = "TCP"
@@ -13,6 +17,8 @@ resource "aws_security_group_rule" "database_inbound" {
 }
 
 resource "aws_security_group_rule" "database_outbound" {
+  description = "Database outbond"
+
   to_port           = 0
   from_port         = 0
   protocol          = "-1"
