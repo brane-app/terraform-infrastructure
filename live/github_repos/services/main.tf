@@ -1,5 +1,5 @@
 module "service_repo" {
-  source = "/home/zero/Documents/programming/imonke/terraform-infrastructure/modules/api_service_repo"
+  source = "/home/zero/Documents/programming/imonke/terraform-infrastructure/modules/repo/api_service"
 
   for_each         = var.services
   service_name     = each.value
