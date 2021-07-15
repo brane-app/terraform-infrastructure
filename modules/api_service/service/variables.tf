@@ -1,8 +1,3 @@
-variable "balancer_arn" {
-  description = "ARN of the load balancer infront of this service"
-  type        = string
-}
-
 variable "cluster_arn" {
   description = "ARN of the cluster to deploy this to"
   type        = string
