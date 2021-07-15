@@ -1,5 +1,5 @@
 libraries = [
   "database", # monkebase
   "tools",    # monkelib
-  "type",     # monketype
+  "types",    # monketype
 ]
