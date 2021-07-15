@@ -39,7 +39,16 @@ module "container" {
     }
   ]
 
-  environment = var.container_environment
+  environment = concat(
+    [
+      {
+        name  = "PATH_PREFIX",
+        value = var.path_prefix,
+      }
+    ],
+    var.container_environment,
+  )
+
   secrets = concat(
     [
       {

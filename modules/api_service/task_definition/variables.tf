@@ -63,6 +63,12 @@ variable "name" {
   type        = string
 }
 
+variable "path_prefix" {
+  description = "HTTP path prefix that the service should consider when handling requests received"
+  type        = string
+  default     = ""
+}
+
 variable "task_cpu" {
   description = "CPU allowance for instances of this task"
   type        = number
