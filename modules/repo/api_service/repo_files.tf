@@ -2,6 +2,7 @@ locals {
   repo_files = [
     ".gitignore",
     "Dockerfile",
+    "main.go",
   ]
 }
 
