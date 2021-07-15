@@ -36,7 +36,7 @@ data "terraform_remote_state" "task-definitions" {
 
   config = {
     bucket  = "imonke-terraform"
-    key     = "${var.prefix}/service/task_defintions.tfstate"
+    key     = "${var.prefix}/service/task-defintions.tfstate"
     region  = "us-east-1"
     profile = "gas"
   }
