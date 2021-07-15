@@ -1,5 +1,5 @@
 module "service_repo" {
-  "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/repo/api_service?ref=master"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/repo/api_service?ref=master"
 
   for_each         = var.services
   service_name     = each.value
