@@ -4,6 +4,9 @@ resource "github_repository" "service" {
 
   license_template = var.repo_license
   visibility       = var.repo_visibility
+
+  has_issues = true
+  has_wiki   = true
 }
 
 resource "github_branch" "master" {
