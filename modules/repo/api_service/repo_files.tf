@@ -1,5 +1,6 @@
 locals {
   repo_files = [
+    ".github/workflows/test.yml",
     ".gitignore",
     "Dockerfile",
     "main.go",
