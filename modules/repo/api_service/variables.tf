@@ -1,3 +1,9 @@
+variable "dockerhub_token" {
+  description = "Dockerhub private token to put into repository secrets"
+  type        = string
+  sensitive   = true
+}
+
 variable "repo_description" {
   description = "A brief description of the service repo"
   type        = string
