@@ -4,6 +4,11 @@ variable "dockerhub_token" {
   sensitive   = true
 }
 
+variable "dockerhub_username" {
+  description = "Dockerhub private username to put into repository secrets"
+  type        = string
+}
+
 variable "repo_description" {
   description = "A brief description of the service repo"
   type        = string
