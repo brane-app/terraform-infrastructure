@@ -1,3 +1,5 @@
+dockerhub_username = "gastrodon"
+
 services = [
   "auth",
   "bans",
