@@ -9,6 +9,10 @@ jobs:
   info:
     runs-on: ubuntu-latest
     steps:
+      - name: Ref
+        run: echo ${{ github.ref }}
+      - name: Head ref
+        run: echo ${{ github.head_ref }}
       - name: Go version
         run: go version
       - name: Dockerhub username exists
