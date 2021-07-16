@@ -14,10 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get dependencies
-        run: go get ./...
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Get dependencies
+        run: go get ./...
       - name: Build package
         run: go build -o job-build-out .
 
@@ -26,14 +26,14 @@ jobs:
     needs:
       - build
     steps:
-      - name: Get dependencies
-        run: go get ./...
       - name: Set up testing database
         uses: mirromutth/mysql-action@v1.1
         with:
           mysql database: brane
           mysql root password: foobar2000
       - name: Check out code
+      - name: Get dependencies
+        run: go get ./...
         uses: actions/checkout@v2
       - name: Run tests
         env:
