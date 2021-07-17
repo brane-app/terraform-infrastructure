@@ -8,3 +8,9 @@ variable "libraries" {
   type        = set(string)
   default     = []
 }
+
+variable "rebuild_services" {
+  description = "Collection of the names of services to trigger CI on when building"
+  type        = set(string)
+  default     = []
+}
