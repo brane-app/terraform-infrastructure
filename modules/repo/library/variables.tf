@@ -1,6 +1,17 @@
+variable "github_token" {
+  description = "Github personal access token used to trigger other builds"
+  type        = string
+}
+
 variable "library_name" {
   description = "Name of the library for which a repo is being created"
   type        = string
+}
+
+variable "rebuild_services" {
+  description = "Collection of the names of services to trigger CI on when building"
+  type        = set(string)
+  default     = []
 }
 
 variable "repo_description" {
