@@ -12,12 +12,13 @@ variable "desired_count" {
 variable "health_check_path" {
   description = "Path to make requests to when doing health checks"
   type        = string
-  default     = "/"
+  default     = "/health"
 }
 
 variable "health_check_matcher" {
   description = "Health check matchers to interpret as healthy"
   type        = string
+  default     = "204"
 }
 
 
