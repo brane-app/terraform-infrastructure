@@ -8,6 +8,7 @@ terraform {
 
   backend "s3" {
     bucket  = "imonke-terraform"
+    key     = "ecr/repos.tfstate"
     profile = "gas"
     region  = "us-east-1"
   }

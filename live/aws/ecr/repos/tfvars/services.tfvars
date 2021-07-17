@@ -1,5 +1,3 @@
-prefix = "staging"
-
 services = [
   "auth",
   "bans",
