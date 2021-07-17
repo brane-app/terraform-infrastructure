@@ -5,7 +5,7 @@ module "task_definition" {
   name   = each.key
   prefix = var.prefix
 
-  container_image = "gastrodon/imonke-${each.key}-service"
+  container_image = "gastrodon/brane-${each.key}-service"
   path_prefix     = each.value.path_prefix
 
   execution_role_arn = data.terraform_remote_state.execution-role.outputs.task_execution_role_arn
