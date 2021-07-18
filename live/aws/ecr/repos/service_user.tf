@@ -12,6 +12,14 @@ data "aws_iam_policy_document" "image_pusher" {
       "ecr:UploadLayerPart",
     ]
   }
+
+  statement {
+    resources = ["*"]
+
+    actions = [
+      "ecr:GetAuthorizationToken",
+    ]
+  }
 }
 
 resource "aws_iam_user" "image_pusher" {
