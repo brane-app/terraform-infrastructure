@@ -9,7 +9,6 @@ module "service" {
   listener_paths         = each.value.paths
   listener_methods       = each.value.methods
   health_check_path      = "/health"
-  health_check_matcher   = "404"
   service_container_port = 8000
 
   listener_arn = data.terraform_remote_state.balancer.outputs.http_listener_arn
