@@ -55,11 +55,14 @@ resource "aws_key_pair" "cluster_node" {
 }
 
 resource "aws_launch_configuration" "cluster_node" {
-  image_id             = jsondecode(data.aws_ssm_parameter.cluster_node_ami.value)["image_id"]
-  iam_instance_profile = aws_iam_instance_profile.cluster_node.name
-  user_data            = data.template_file.node_user_data.rendered
-  instance_type        = "t3.micro"
-  key_name             = aws_key_pair.cluster_node.key_name
+  name = "${var.prefix}-ecs-service-instance"
+
+  image_id                    = jsondecode(data.aws_ssm_parameter.cluster_node_ami.value)["image_id"]
+  iam_instance_profile        = aws_iam_instance_profile.cluster_node.name
+  user_data                   = data.template_file.node_user_data.rendered
+  instance_type               = "t3.micro"
+  key_name                    = aws_key_pair.cluster_node.key_name
+  associate_public_ip_address = false
 
   security_groups = [
     data.terraform_remote_state.security.outputs.group_database_ingress_id,
