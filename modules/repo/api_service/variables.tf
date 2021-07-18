@@ -1,3 +1,21 @@
+variable "aws_access_key_id" {
+  description = "AWS access key id of a user who may push ECR repos"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_region" {
+  description = "Where are we?"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "aws_secret_access_key" {
+  description = "AWS secret key of a user who may push ECR repos"
+  type        = string
+  sensitive   = true
+}
+
 variable "dockerhub_token" {
   description = "Dockerhub private token to put into repository secrets"
   type        = string
@@ -6,6 +24,11 @@ variable "dockerhub_token" {
 
 variable "dockerhub_username" {
   description = "Dockerhub private username to put into repository secrets"
+  type        = string
+}
+
+variable "ecr_namespace" {
+  description = "ECR public repo namespace"
   type        = string
 }
 
