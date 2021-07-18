@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "image_pusher" {
 
     actions = [
       "ecr-public:GetAuthorizationToken",
+      "sts:GetServiceBearerToken",
     ]
   }
 }
