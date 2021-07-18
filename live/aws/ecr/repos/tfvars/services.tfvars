@@ -4,7 +4,7 @@ services = [
   "check",
   "content-create",
   "content-giver",
-  "feed",
+  "feed-giver",
   "report",
   "self",
   "user-create",
