@@ -1,4 +1,5 @@
 dockerhub_username = "gastrodon"
+ecr_namespace      = "v6g1e4z1"
 
 services = [
   "auth",

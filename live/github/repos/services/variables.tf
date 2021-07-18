@@ -9,6 +9,11 @@ variable "dockerhub_username" {
   type        = string
 }
 
+variable "ecr_namespace" {
+  description = "ECR public repo namespace"
+  type        = string
+}
+
 variable "github_personal_token" {
   description = "Github personal access token to auth with"
   type        = string
