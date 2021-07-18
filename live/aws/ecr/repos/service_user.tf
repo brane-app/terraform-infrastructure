@@ -3,13 +3,13 @@ data "aws_iam_policy_document" "image_pusher" {
     resources = [for it in aws_ecrpublic_repository.repos : it.arn]
 
     actions = [
-      "ecr:BatchGetImage",
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
+      "ecr-public:BatchGetImage",
+      "ecr-public:BatchCheckLayerAvailability",
+      "ecr-public:CompleteLayerUpload",
+      "ecr-public:GetDownloadUrlForLayer",
+      "ecr-public:InitiateLayerUpload",
+      "ecr-public:PutImage",
+      "ecr-public:UploadLayerPart",
     ]
   }
 
@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "image_pusher" {
     resources = ["*"]
 
     actions = [
-      "ecr:GetAuthorizationToken",
+      "ecr-public:GetAuthorizationToken",
     ]
   }
 }
