@@ -3,6 +3,7 @@ locals {
     ".gitignore",
     "Dockerfile",
     "main.go",
+    "package_test.go",
   ]
 }
 
