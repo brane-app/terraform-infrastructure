@@ -15,10 +15,6 @@ jobs:
         run: echo $${{ github.head_ref }}
       - name: Go version
         run: go version
-      - name: Github username exists
-        run: echo $${{ secrets.GH_USERNAME }} | wc -c
-      - name: Github token exists
-        run: echo $${{ secrets.GH_TOKEN }} | wc -c
 
   test:
     runs-on: ubuntu-latest
