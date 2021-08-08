@@ -32,6 +32,17 @@ variable "ecr_namespace" {
   type        = string
 }
 
+variable "language" {
+  description = "The primary language of this repo, which determines what files will be placed"
+  type        = string
+  default     = "go"
+
+  validation {
+    condition     = contains(["go", "rust"], var.language)
+    error_message = "Must be one of go, rust."
+  }
+}
+
 variable "repo_description" {
   description = "A brief description of the service repo"
   type        = string

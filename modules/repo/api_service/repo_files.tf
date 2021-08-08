@@ -13,7 +13,7 @@ resource "github_repository_file" "files" {
   repository          = github_repository.service.name
   branch              = github_branch_default.master.branch
   file                = each.value
-  content             = file("${path.module}/repo_files/${each.value}")
+  content             = file("${path.module}/repo_files/${var.language}/${each.value}")
   overwrite_on_create = true
 }
 
@@ -25,7 +25,7 @@ resource "github_repository_file" "rendered_workflow" {
   overwrite_on_create = true
 
   content = templatefile(
-    "${path.module}/repo_files/.github/workflows/test.yml",
+    "${path.module}/repo_files/${var.language}/.github/workflows/test.yml",
     {
       "aws_region"         = var.aws_region,
       "dockerhub_username" = var.dockerhub_username,
