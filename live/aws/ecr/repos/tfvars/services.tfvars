@@ -9,4 +9,6 @@ services = [
   "self",
   "user-create",
   "user-giver",
+
+  "database-enforcer",
 ]
