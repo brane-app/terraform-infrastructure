@@ -16,7 +16,7 @@ module "task_definition" {
   database_endpoint = data.terraform_remote_state.database.outputs.endpoint
 }
 
-module "task_definition_database_enforcer" {
+module "database_enforcer" {
   # source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/database-enforcer/task_definition?ref=master"
   source = "/Users/gastrodon/Documents/programming/brane/terraform-infrastructure/modules/database-enforcer/task_definition"
 
