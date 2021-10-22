@@ -17,8 +17,7 @@ module "task_definition" {
 }
 
 module "database_enforcer" {
-  # source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/database-enforcer/task_definition?ref=master"
-  source = "/Users/gastrodon/Documents/programming/brane/terraform-infrastructure/modules/database-enforcer/task_definition"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/database-enforcer/task_definition?ref=master"
 
   name   = "database-enforcer"
   prefix = var.prefix
