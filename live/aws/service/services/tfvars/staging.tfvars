@@ -9,6 +9,6 @@ service_map = {
   "feed-giver" : { paths = ["/feed/*"], methods = ["GET"] },
   "report" : { paths = ["/report/*"], methods = ["GET", "POST", "PUT"] },
   "self" : { paths = ["/self/*"], methods = ["GET", "POST", "PUT", "DELETE"] },
-  "user-create" : { paths = ["/user/*"], methods = ["POST"] },
+  "user-create" : { paths = ["/user", "/user/", "/user/*"], methods = ["POST"] },
   "user-giver" : { paths = ["/user/*"], methods = ["GET"] },
 }
