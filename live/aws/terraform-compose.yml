@@ -1,0 +1,86 @@
+services:
+    network:
+        path: ./fundamental/network
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    security:
+        path: ./fundamental/security
+
+        depends-on:
+            - network
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    cluster:
+        path: ./fundamental/cluster
+
+        vars:
+            public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLxnIkuDsa9jqlrvAuDBKcD2vsRwiA3iRDRMBrflr/7PgAsdLWhiwtbppp2AN452NTxAB/znMgzqYhv/ihOcNfleI9oHX0bsJGrFlqY9j9EHy5uT3rvrBPOJzvLaLpgi0EoRVof/g+ewpeSew+ieuAUe/jNX5CMXC4vtvcyLin66xLlto6l5t1BZSZNTLrGL3ipV6WaFoyM2isSJ2znIAjAuP9Xu1gSz79PrpqOxpqX7Pqhmvo1PmWEN7oOhPzaPjm1lcZ97tEoJVCL3bANTN6jkvDLNDswOv8e0xk2gzUTYJaHSv9psyoq+b4WzBTDbkMCmXdeYtMa0ZWsAv58/VC0BSyHqdlAvan3YY9yiWO+x2r+htpys7j7SSZDJe4pUh9bgVJAMbpdgQCjOnI2+HNVSUd+0aHEHFIAja4FcbmsuS7UNo96lfkOQTuTJe167RPbP4fHhwfXhH4818UlAuM6msa43fIbvz/e2lrXIilpYXIY8kyF2qiXHQkZOmgzuU= zero@stone"
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - network
+            - security
+
+    service-balancer:
+        path: ./service/fundamental/balancer
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - network
+            - security
+
+    service-database:
+        path: ./service/fundamental/database
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - network
+            - security
+            - cluster
+
+    service-execution-role:
+        path: ./service/fundamental/execution-role
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    ecr-repos:
+        path: ./ecr/repos
+        no-destroy: true
+
+        var-files:
+            - tfvars/services.tfvars
+
+    task-definitions:
+        path: ./service/task-definitions
+        no-destroy: true
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - service-database
+            - service-execution-role
+            - ecr-repos
+
+    services:
+        path: ./service/services
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - cluster
+            - network
+            - service-balancer
+            - task-definitions
