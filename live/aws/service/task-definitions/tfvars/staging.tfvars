@@ -12,3 +12,5 @@ service_map = {
   "user-create" : { path_prefix = "/user" },
   "user-giver" : { path_prefix = "/user" },
 }
+
+ferrothorn_docker_repo = "gastrodon/ferrothorn"

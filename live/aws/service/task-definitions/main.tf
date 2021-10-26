@@ -30,3 +30,18 @@ module "database_enforcer" {
   database_password = data.terraform_remote_state.database.outputs.password_services
   database_endpoint = data.terraform_remote_state.database.outputs.endpoint_services
 }
+
+module "ferrothorn" {
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/database-enforcer/task_definition?ref=master"
+
+  name   = "ferrothorn"
+  prefix = var.prefix
+
+  container_image    = var.ferrothorn_docker_repo
+  execution_role_arn = data.terraform_remote_state.execution-role.outputs.task_execution_role_arn
+
+  database_name     = data.terraform_remote_state.database.outputs.database_ferrothorn
+  database_username = data.terraform_remote_state.database.outputs.username_ferrothorn
+  database_password = data.terraform_remote_state.database.outputs.password_ferrothorn
+  database_endpoint = data.terraform_remote_state.database.outputs.endpoint_ferrothorn
+}
