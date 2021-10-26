@@ -10,8 +10,24 @@ variable "database_instance" {
   default     = "db.t3.micro"
 }
 
-variable "database_password" {
-  description = "Database user password"
+variable "database_name_services" {
+  description = "Services database name"
+  type        = string
+}
+
+variable "database_name_ferrothorn" {
+  description = "Ferrothorn database name"
+  type        = string
+}
+
+variable "database_password_services" {
+  description = "Services database user password"
+  type        = string
+  sensitive   = true
+}
+
+variable "database_password_ferrothorn" {
+  description = "Ferrothorn database user password"
   type        = string
   sensitive   = true
 }
@@ -27,8 +43,14 @@ variable "database_storage_allocated" {
   type        = number
 }
 
-variable "database_username" {
-  description = "Database username"
+variable "database_username_services" {
+  description = "Services database username"
+  type        = string
+  default     = "service"
+}
+
+variable "database_username_ferrothorn" {
+  description = "Ferrothorn database username"
   type        = string
   default     = "service"
 }
