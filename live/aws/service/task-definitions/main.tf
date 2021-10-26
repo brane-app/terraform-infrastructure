@@ -10,10 +10,10 @@ module "task_definition" {
 
   execution_role_arn = data.terraform_remote_state.execution-role.outputs.task_execution_role_arn
 
-  database_name     = data.terraform_remote_state.database.outputs.database
-  database_username = data.terraform_remote_state.database.outputs.username
-  database_password = data.terraform_remote_state.database.outputs.password
-  database_endpoint = data.terraform_remote_state.database.outputs.endpoint
+  database_name     = data.terraform_remote_state.database.outputs.database_services
+  database_username = data.terraform_remote_state.database.outputs.username_services
+  database_password = data.terraform_remote_state.database.outputs.password_services
+  database_endpoint = data.terraform_remote_state.database.outputs.endpoint_services
 }
 
 module "database_enforcer" {
@@ -25,8 +25,8 @@ module "database_enforcer" {
   container_image    = data.terraform_remote_state.ecr_repos.outputs.repo_urls["database-enforcer"]
   execution_role_arn = data.terraform_remote_state.execution-role.outputs.task_execution_role_arn
 
-  database_name     = data.terraform_remote_state.database.outputs.database
-  database_username = data.terraform_remote_state.database.outputs.username
-  database_password = data.terraform_remote_state.database.outputs.password
-  database_endpoint = data.terraform_remote_state.database.outputs.endpoint
+  database_name     = data.terraform_remote_state.database.outputs.database_services
+  database_username = data.terraform_remote_state.database.outputs.username_services
+  database_password = data.terraform_remote_state.database.outputs.password_services
+  database_endpoint = data.terraform_remote_state.database.outputs.endpoint_services
 }
