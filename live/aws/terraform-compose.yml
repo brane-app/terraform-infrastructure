@@ -2,11 +2,17 @@ services:
     network:
         path: ./fundamental/network
 
+        backend-configs:
+            - backend/staging.tfvars
+
         var-files:
             - tfvars/staging.tfvars
 
     security:
         path: ./fundamental/security
+
+        backend-configs:
+            - backend/staging.tfvars
 
         depends-on:
             - network
@@ -17,8 +23,8 @@ services:
     cluster:
         path: ./fundamental/cluster
 
-        vars:
-            public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLxnIkuDsa9jqlrvAuDBKcD2vsRwiA3iRDRMBrflr/7PgAsdLWhiwtbppp2AN452NTxAB/znMgzqYhv/ihOcNfleI9oHX0bsJGrFlqY9j9EHy5uT3rvrBPOJzvLaLpgi0EoRVof/g+ewpeSew+ieuAUe/jNX5CMXC4vtvcyLin66xLlto6l5t1BZSZNTLrGL3ipV6WaFoyM2isSJ2znIAjAuP9Xu1gSz79PrpqOxpqX7Pqhmvo1PmWEN7oOhPzaPjm1lcZ97tEoJVCL3bANTN6jkvDLNDswOv8e0xk2gzUTYJaHSv9psyoq+b4WzBTDbkMCmXdeYtMa0ZWsAv58/VC0BSyHqdlAvan3YY9yiWO+x2r+htpys7j7SSZDJe4pUh9bgVJAMbpdgQCjOnI2+HNVSUd+0aHEHFIAja4FcbmsuS7UNo96lfkOQTuTJe167RPbP4fHhwfXhH4818UlAuM6msa43fIbvz/e2lrXIilpYXIY8kyF2qiXHQkZOmgzuU= zero@stone"
+        backend-configs:
+            - backend/staging.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -30,6 +36,9 @@ services:
     service-balancer:
         path: ./service/fundamental/balancer
 
+        backend-configs:
+            - backend/staging.tfvars
+
         var-files:
             - tfvars/staging.tfvars
 
@@ -39,6 +48,9 @@ services:
 
     service-database:
         path: ./service/fundamental/database
+
+        backend-configs:
+            - backend/staging.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -50,6 +62,9 @@ services:
 
     service-execution-role:
         path: ./service/fundamental/execution-role
+
+        backend-configs:
+            - backend/staging.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -65,6 +80,9 @@ services:
         path: ./service/task-definitions
         no-destroy: true
 
+        backend-configs:
+            - backend/staging.tfvars
+
         var-files:
             - tfvars/staging.tfvars
 
@@ -78,6 +96,9 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+
+        backend-configs:
+            - backend/staging.tfvars
 
         depends-on:
             - cluster
