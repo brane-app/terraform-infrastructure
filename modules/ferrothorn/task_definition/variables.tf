@@ -52,11 +52,6 @@ variable "log_retention" {
   default     = 7
 }
 
-variable "name" {
-  description = "The name of this service"
-  type        = string
-}
-
 variable "task_cpu" {
   description = "CPU allowance for instances of this task"
   type        = number
