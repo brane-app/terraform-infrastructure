@@ -1,8 +1,8 @@
 data "aws_region" "current" {}
 
 resource "aws_ecs_task_definition" "definition" {
-  family = "${var.prefix}-service-${var.name}"
-  tags   = { "Name" : "${var.prefix}-service-${var.name}" }
+  family = "${var.prefix}-ferrothorn"
+  tags   = { "Name" : "${var.prefix}-ferrothorn" }
 
   cpu                      = var.task_cpu
   memory                   = var.task_ram
