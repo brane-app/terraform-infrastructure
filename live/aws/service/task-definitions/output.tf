@@ -1,4 +1,4 @@
-output "task_definition_arns" {
+output "task_definition_services_arns" {
   value = { for key, value in module.task_definition : key => value.task_definition_arn }
 }
 
