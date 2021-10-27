@@ -4,7 +4,7 @@ module "api_service" {
 
   name            = each.key
   prefix          = var.prefix
-  task_definition = data.terraform_remote_state.task-definitions.outputs.task_definition_arns[each.key]
+  task_definition = data.terraform_remote_state.task-definitions.outputs.task_definition_services_arns[each.key]
 
   listener_paths         = each.value.paths
   listener_methods       = each.value.methods
@@ -25,4 +25,15 @@ module "database_enforcer" {
 
   cluster_arn = data.terraform_remote_state.cluster.outputs.cluster_arn
   host_vpc_id = data.terraform_remote_state.network.outputs.vpc_id
+}
+
+module "ferrothorn" {
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/ferrothorn/service?ref=feat/deploy-ferrothorn"
+
+  prefix          = var.prefix
+  task_definition = data.terraform_remote_state.task-definitions.outputs.task_definition_ferrothorn_arn
+
+  listener_arn = data.terraform_remote_state.balancer.outputs.http_listener_arn
+  cluster_arn  = data.terraform_remote_state.cluster.outputs.cluster_arn
+  host_vpc_id  = data.terraform_remote_state.network.outputs.vpc_id
 }
