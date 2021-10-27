@@ -2,7 +2,7 @@ resource "aws_route53_zone" "zone" {
   name = var.domain_name
 }
 
-resource "aws_route53_record" "prefix" {
+resource "aws_route53_record" "api" {
   name = "api.${var.prefix}.${var.domain_name}"
 
   zone_id = aws_route53_zone.zone.zone_id
@@ -15,7 +15,7 @@ resource "aws_route53_record" "prefix" {
   }
 }
 
-resource "aws_route53_record" "prefix" {
+resource "aws_route53_record" "file" {
   name = "file.${var.prefix}.${var.domain_name}"
 
   zone_id = aws_route53_zone.zone.zone_id
