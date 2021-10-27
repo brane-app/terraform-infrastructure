@@ -42,11 +42,6 @@ variable "listener_paths" {
   type        = set(string)
 }
 
-variable "name" {
-  description = "The name of this service"
-  type        = string
-}
-
 variable "service_container_port" {
   description = "Port that this container listens on for requests"
   type        = number
