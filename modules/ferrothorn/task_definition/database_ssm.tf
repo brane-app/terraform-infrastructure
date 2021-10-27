@@ -3,7 +3,7 @@ locals {
 }
 
 resource "aws_ssm_parameter" "connection" {
-  name  = "/${var.prefix}/service/${var.name}/FERROTHORN_CONNECTION"
+  name  = "/${var.prefix}/ferrothorn/FERROTHORN_CONNECTION"
   type  = "SecureString"
   value = local.database_connection
 }
