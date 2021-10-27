@@ -19,4 +19,10 @@ resource "aws_lb_listener_rule" "rule" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.http.arn
   }
+
+  condition {
+    path_pattern {
+      values = ["", "*"]
+    }
+  }
 }
