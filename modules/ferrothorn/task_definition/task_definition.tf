@@ -17,7 +17,7 @@ module "container" {
   version                  = "~> 0"
   readonly_root_filesystem = true
   container_image          = var.container_image
-  container_name           = "${var.prefix}-service-${var.name}"
+  container_name           = "${var.prefix}-ferrothorn"
   container_cpu            = var.task_cpu
   container_memory         = var.task_ram
 
@@ -26,7 +26,7 @@ module "container" {
 
     options = {
       "awslogs-group"         = aws_cloudwatch_log_group.logs.name,
-      "awslogs-stream-prefix" = "${var.prefix}-service-${var.name}",
+      "awslogs-stream-prefix" = "${var.prefix}-ferrothorn",
       "awslogs-region"        = data.aws_region.current.name,
     }
   }
