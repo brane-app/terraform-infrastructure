@@ -32,16 +32,6 @@ variable "listener_arn" {
   type        = string
 }
 
-variable "listener_methods" {
-  description = "Methods to listen for requests to this service on"
-  type        = set(string)
-}
-
-variable "listener_paths" {
-  description = "Path to listen for requests to this service on"
-  type        = set(string)
-}
-
 variable "service_container_port" {
   description = "Port that this container listens on for requests"
   type        = number
