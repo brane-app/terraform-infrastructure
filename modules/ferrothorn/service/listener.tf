@@ -21,8 +21,8 @@ resource "aws_lb_listener_rule" "rule" {
   }
 
   condition {
-    path_pattern {
-      values = ["*"]
+    host_header {
+      values = ["file.*"]
     }
   }
 }

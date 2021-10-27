@@ -31,4 +31,10 @@ resource "aws_lb_listener_rule" "rule" {
       values = var.listener_methods
     }
   }
+
+  condition {
+    host_header {
+      values = ["api.*"]
+    }
+  }
 }
