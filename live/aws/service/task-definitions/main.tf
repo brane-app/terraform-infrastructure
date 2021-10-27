@@ -32,7 +32,7 @@ module "database_enforcer" {
 }
 
 module "ferrothorn" {
-  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/database-enforcer/task_definition?ref=master"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/ferrothorn/task_definition?ref=feat/deploy-ferrothorn"
 
   name   = "ferrothorn"
   prefix = var.prefix
