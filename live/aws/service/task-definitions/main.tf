@@ -34,7 +34,6 @@ module "database_enforcer" {
 module "ferrothorn" {
   source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/ferrothorn/task_definition?ref=feat/deploy-ferrothorn"
 
-  name   = "ferrothorn"
   prefix = var.prefix
 
   container_image    = var.ferrothorn_docker_repo
