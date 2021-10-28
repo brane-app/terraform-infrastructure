@@ -1,0 +1,9 @@
+services:
+    namespace:
+        path: ./namespace
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
