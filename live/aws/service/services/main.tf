@@ -28,7 +28,7 @@ module "database_enforcer" {
 }
 
 module "ferrothorn" {
-  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/ferrothorn/service?ref=feat/deploy-ferrothorn"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/ferrothorn/service?ref=master"
 
   prefix          = var.prefix
   task_definition = data.terraform_remote_state.task-definitions.outputs.task_definition_ferrothorn_arn
