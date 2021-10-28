@@ -46,19 +46,6 @@ services:
             - network
             - security
 
-    dns:
-        path: ./dns
-        no-destroy: true
-
-        backend-configs:
-            - backend/staging.tfvars
-
-        var-files:
-            - tfvars/staging.tfvars
-
-        depends-on:
-            - service-balancer
-
     service-database:
         path: ./service/fundamental/database
 
