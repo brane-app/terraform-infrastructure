@@ -7,3 +7,12 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+
+    service-consul:
+        path: ./services/consul
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
