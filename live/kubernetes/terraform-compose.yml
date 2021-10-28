@@ -16,3 +16,6 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
