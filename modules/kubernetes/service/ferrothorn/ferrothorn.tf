@@ -30,7 +30,7 @@ resource "kubernetes_deployment" "ferrothorn" {
   }
 
   spec {
-    replicas = 2
+    replicas = var.ferrothorn_replicas
 
     selector {
       match_labels = local.labels_service

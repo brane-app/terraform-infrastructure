@@ -22,6 +22,12 @@ variable "ferrothorn_image_tag" {
   default     = "latest"
 }
 
+variable "ferrothorn_replicas" {
+  description = "Number of ferrothorn replicas to launch"
+  type        = number
+  default     = 2
+}
+
 variable "app" {
   description = "Name of the app resources are being deployed for"
   type        = string
