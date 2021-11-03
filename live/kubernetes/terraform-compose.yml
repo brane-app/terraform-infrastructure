@@ -30,7 +30,6 @@ services:
             - tfvars/staging.tfvars
 
         depends-on:
-            - consul
             - namespace
 
     api-database:
@@ -69,6 +68,5 @@ services:
 
         depends-on:
             - namespace
-            - consul
             - api-database
             - database-enforcer
