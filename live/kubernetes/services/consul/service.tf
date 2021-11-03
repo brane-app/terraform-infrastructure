@@ -11,43 +11,43 @@ resource "kubernetes_service" "consul" {
     port {
       name        = "${local.prefix}-rpc-tcp"
       protocol    = "TCP"
-      port        = 8300
-      target_port = 8300
-    }
-
-    port {
-      name        = "${local.prefix}-serf-tcp"
-      protocol    = "TCP"
-      port        = 8301
-      target_port = 8301
+      port        = local.port_rcp_tcp
+      target_port = local.port_rcp_tcp
     }
 
     port {
       name        = "${local.prefix}-rpc-udp"
       protocol    = "UDP"
-      port        = 8301
-      target_port = 8301
+      port        = local.port_rcp_udp
+      target_port = local.port_rcp_udp
+    }
+
+    port {
+      name        = "${local.prefix}-serf-tcp"
+      protocol    = "TCP"
+      port        = local.port_serf_tcp
+      target_port = local.port_serf_tcp
     }
 
     port {
       name        = "${local.prefix}-http-tcp"
       protocol    = "TCP"
-      port        = 8500
-      target_port = 8500
+      port        = local.port_http_tcp
+      target_port = local.port_http_tcp
     }
 
     port {
       name        = "${local.prefix}-dns-tcp"
       protocol    = "TCP"
-      port        = 8600
-      target_port = 8600
+      port        = local.port_dns_tcp
+      target_port = local.port_dns_tcp
     }
 
     port {
       name        = "${local.prefix}-dns-udp"
       protocol    = "UDP"
-      port        = 8600
-      target_port = 8600
+      port        = local.port_dns_udp
+      target_port = local.port_dns_udp
     }
   }
 }
