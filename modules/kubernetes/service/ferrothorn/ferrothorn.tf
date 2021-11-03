@@ -11,7 +11,7 @@ resource "kubernetes_service" "ferrothorn" {
 
     port {
       protocol    = "TCP"
-      port        = 8000
+      port        = 80
       target_port = 8000
     }
   }

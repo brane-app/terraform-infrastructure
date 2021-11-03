@@ -1,4 +1,4 @@
-module "terraform" {
+module "ferrothorn" {
   # TODO use git repo address
   source = "/home/zero/Documents/programming/brane/terraform-infrastructure/modules/kubernetes/service/ferrothorn"
 
