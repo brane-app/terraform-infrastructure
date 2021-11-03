@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "consul" {
   metadata {
     name      = local.prefix
-    namespace = local.namespace
+    namespace = data.terraform_remote_state.namespace.outputs.namespace_name
     labels    = local.labels
   }
 

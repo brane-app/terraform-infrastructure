@@ -1,10 +1,9 @@
 locals {
-  prefix    = "${var.environment}-service-consul"
-  namespace = data.terraform_remote_state.namespace.outputs.namespace_name
+  prefix = "${var.app}-${var.environment}-consul"
 
   labels = {
-    app         = "service-consul"
+    app         = var.app
     environment = var.environment
-    namespace   = local.namespace
+    resource    = local.prefix
   }
 }
