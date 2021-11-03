@@ -1,5 +1,5 @@
 module "brane-api" {
-  source   = "/home/zero/Documents/programming/brane/terraform-infrastructure/modules/kubernetes/service/brane-api"
+  source   = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/service/brane-api?ref=feat/kubernetes"
   for_each = var.services
 
   app         = var.app

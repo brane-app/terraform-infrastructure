@@ -1,6 +1,5 @@
 module "ferrothorn" {
-  # TODO use git repo address
-  source = "/home/zero/Documents/programming/brane/terraform-infrastructure/modules/kubernetes/service/ferrothorn"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/service/ferrothorn?ref=feat/kubernetes"
 
   app         = var.app
   environment = var.environment
