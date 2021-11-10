@@ -1,9 +1,9 @@
 globals:
     backend-configs:
-        - backend/staging.tfvars
+        - backend/live.tfvars
 
     var-files:
-        - tfvars/staging.tfvars
+        - tfvars/live.tfvars
 
 services:
     state-bucket:
@@ -12,10 +12,10 @@ services:
         no-destroy: true
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/live.tfvars
 
         var-files:
-            - tfvars/staging.tfvars
+            - tfvars/live.tfvars
 
     ecr-repos:
         path: ./ecr/repos
@@ -23,10 +23,10 @@ services:
         no-destroy: true
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/live.tfvars
 
         var-files:
-            - tfvars/staging.tfvars
+            - tfvars/live.tfvars
 
         depends_on:
             - state-bucket
@@ -36,10 +36,10 @@ services:
         reconfigure: true
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/live.tfvars
 
         var-files:
-            - tfvars/staging.tfvars
+            - tfvars/live.tfvars
 
         depends_on:
             - state-bucket
