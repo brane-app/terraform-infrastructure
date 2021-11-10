@@ -13,3 +13,13 @@ variable "default_vpc_subnet_ids" {
 variable "defualt_vpc_id" {
   description = "ID of the account's environment VPC"
 }
+
+variable "app" {
+  description = "App being deployed"
+  type        = string
+}
+
+variable "environment" {
+  description = "App deployment environment"
+  type        = string
+}

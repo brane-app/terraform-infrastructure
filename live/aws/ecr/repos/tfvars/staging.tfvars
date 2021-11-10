@@ -12,3 +12,6 @@ services = [
 
   "database-enforcer",
 ]
+
+app         = "brane"
+environment = "staging"

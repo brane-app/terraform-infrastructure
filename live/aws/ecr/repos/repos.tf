@@ -1,7 +1,7 @@
 resource "aws_ecrpublic_repository" "repos" {
   for_each = var.services
 
-  repository_name = "brane-${each.value}-service"
+  repository_name = "${var.app}-${var.environment}/${each.value}-service"
 
   catalog_data {
     about_text  = "Brane ${each.value} microservice"

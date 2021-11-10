@@ -1,5 +1,3 @@
-prefix = "staging"
-
 default_vpc_internet_gateway_id = "igw-17dc216d"
 default_vpc_route_table_id      = "rtb-e345509d"
 defualt_vpc_id                  = "vpc-3736b94a"
@@ -12,3 +10,6 @@ default_vpc_subnet_ids = [
   "subnet-4124a270", # us-east-1e
   "subnet-ed0b3fe3", # us-east-1f
 ]
+
+app         = "brane"
+environment = "staging"

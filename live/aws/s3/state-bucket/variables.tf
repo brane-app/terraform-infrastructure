@@ -1,9 +1,3 @@
-variable "services" {
-  description = "Collection of services to make repos for"
-  type        = set(string)
-  default     = []
-}
-
 variable "app" {
   description = "App being deployed"
   type        = string
