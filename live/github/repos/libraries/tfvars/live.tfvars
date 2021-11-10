@@ -1,7 +1,7 @@
 libraries = [
-  "database", # monkebase
-  "tools",    # monkelib
-  "types",    # monketype
+  "database",
+  "tools",
+  "types",
 ]
 
 rebuild_services = [
