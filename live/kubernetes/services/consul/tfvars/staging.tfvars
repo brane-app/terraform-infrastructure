@@ -1,2 +1,0 @@
-app         = "brane"
-environment = "staging"
