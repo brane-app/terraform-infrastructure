@@ -15,3 +15,23 @@ services:
 
         var-files:
             - tfvars/live.tfvars
+
+    repos-libraries:
+        path: ./repos/libraries
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+    repos-services:
+        path: ./repos/services
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
