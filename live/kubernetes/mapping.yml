@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: brane-staging-router
+    namespace: brane-staging
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /self
+        pathType: Prefix
+        backend:
+          service:
+            name: brane-staging-brane-api-self
+            port:
+              number: 80

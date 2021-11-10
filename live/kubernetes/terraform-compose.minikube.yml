@@ -3,7 +3,7 @@ services:
         path: ./namespace
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -12,7 +12,7 @@ services:
         path: ./services/ferrothorn
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -24,7 +24,7 @@ services:
         path: ./services/brane-api/database
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -36,7 +36,7 @@ services:
         path: ./services/database-enforcer
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -49,7 +49,7 @@ services:
         path: ./services/brane-api/services
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
@@ -64,7 +64,7 @@ services:
         path: ./services/traefik
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/staging-minikube.tfvars
 
         var-files:
             - tfvars/staging.tfvars
