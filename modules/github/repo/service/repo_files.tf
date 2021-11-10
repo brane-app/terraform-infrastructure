@@ -27,6 +27,8 @@ resource "github_repository_file" "rendered_workflow" {
   content = templatefile(
     "${path.module}/repo_files/${var.language}/.github/workflows/test.yml",
     {
+      "app"                = var.app
+      "environment"        = var.environment
       "aws_region"         = var.aws_region,
       "dockerhub_username" = var.dockerhub_username,
       "ecr_namespace"      = var.ecr_namespace,

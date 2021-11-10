@@ -65,3 +65,13 @@ variable "service_name" {
   description = "Name of the service for which a repo is being created"
   type        = string
 }
+
+variable "app" {
+  description = "App being deployed"
+  type        = string
+}
+
+variable "environment" {
+  description = "App deployment environment"
+  type        = string
+}
