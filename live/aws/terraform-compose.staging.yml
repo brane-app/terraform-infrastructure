@@ -8,6 +8,7 @@ globals:
 services:
     state-bucket:
         path: ./s3/state-bucket
+        no-destroy: true
 
         backend-configs:
             - backend/staging.tfvars
@@ -25,6 +26,9 @@ services:
         var-files:
             - tfvars/staging.tfvars
 
+        depends_on:
+            - state-bucket
+
     network:
         path: ./vpc/network-default
 
@@ -33,3 +37,6 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+
+        depends_on:
+            - state-bucket
