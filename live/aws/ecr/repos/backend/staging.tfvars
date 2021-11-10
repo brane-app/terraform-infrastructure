@@ -1,1 +1,1 @@
-bucket = "brane-staging-terraform-state"
+bucket = "brane-staging-aws-terraform-state"
