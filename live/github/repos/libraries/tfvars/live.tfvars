@@ -16,3 +16,6 @@ rebuild_services = [
   "user-create",
   "user-giver",
 ]
+
+app         = "brane"
+environment = "live"
