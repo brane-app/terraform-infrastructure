@@ -18,6 +18,7 @@ services:
 
     repos-libraries:
         path: ./repos/libraries
+        no-destroy: true
 
         backend-configs:
             - backend/live.tfvars
@@ -28,6 +29,7 @@ services:
 
     repos-services:
         path: ./repos/services
+        no-destroy: true
 
         backend-configs:
             - backend/live.tfvars
