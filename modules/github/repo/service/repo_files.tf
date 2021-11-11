@@ -34,4 +34,11 @@ resource "github_repository_file" "rendered_workflow" {
       "ecr_namespace"      = var.ecr_namespace,
     },
   )
+
+  depends_on = [
+    github_actions_secret.dockerhub_token,
+    github_actions_secret.dockerhub_username,
+    github_actions_secret.aws_access_key_id,
+    github_actions_secret.aws_secret_access_key,
+  ]
 }
