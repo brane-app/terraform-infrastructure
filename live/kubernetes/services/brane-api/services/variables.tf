@@ -5,5 +5,5 @@ variable "image_namespace" {
 
 variable "services" {
   description = "A collection of servic definitions to deploy"
-  type        = map(map(string))
+  type        = any
 }
