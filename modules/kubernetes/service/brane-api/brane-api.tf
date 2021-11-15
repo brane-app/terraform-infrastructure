@@ -11,7 +11,7 @@ resource "kubernetes_service" "service" {
 
     port {
       protocol    = "TCP"
-      port        = 8000
+      port        = local.port
       target_port = 8000
     }
   }
