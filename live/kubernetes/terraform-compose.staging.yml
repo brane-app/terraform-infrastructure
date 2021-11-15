@@ -1,0 +1,65 @@
+services:
+    namespace:
+        path: ./namespace
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    ferrothorn:
+        path: ./services/ferrothorn
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
+
+    api-database:
+        path: ./services/brane-api/database
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
+
+    database-enforcer:
+        path: ./services/database-enforcer
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
+            - api-database
+
+    api-services:
+        path: ./services/brane-api/services
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
+            - api-database
+            - database-enforcer

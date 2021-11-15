@@ -1,0 +1,27 @@
+globals:
+    backend-configs:
+        - backend/live.tfvars
+
+    var-files:
+        - tfvars/live.tfvars
+
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    kubernetes-cluster:
+        path: ./kubernetes/cluster
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars

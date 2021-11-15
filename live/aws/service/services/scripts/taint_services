@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-for it in $(echo auth bans check content-create content-giver feed-giver report self user-create user-giver); do
-    terraform taint module.service\[\"$it\"\].aws_ecs_service.service ;
-done

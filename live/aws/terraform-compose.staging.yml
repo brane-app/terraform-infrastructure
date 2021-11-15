@@ -1,0 +1,45 @@
+globals:
+    backend-configs:
+        - backend/staging.tfvars
+
+    var-files:
+        - tfvars/staging.tfvars
+
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        reconfigure: true
+        no-destroy: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    ecr-repos:
+        path: ./ecr/repos
+        reconfigure: true
+        no-destroy: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends_on:
+            - state-bucket
+
+    network:
+        path: ./vpc/network-default
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends_on:
+            - state-bucket

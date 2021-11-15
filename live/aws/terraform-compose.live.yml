@@ -1,0 +1,45 @@
+globals:
+    backend-configs:
+        - backend/live.tfvars
+
+    var-files:
+        - tfvars/live.tfvars
+
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        reconfigure: true
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    ecr-repos:
+        path: ./ecr/repos
+        reconfigure: true
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends_on:
+            - state-bucket
+
+    network:
+        path: ./vpc/network-default
+        reconfigure: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends_on:
+            - state-bucket

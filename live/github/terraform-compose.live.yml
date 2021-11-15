@@ -1,0 +1,39 @@
+globals:
+    backend-configs:
+        - backend/live.tfvars
+
+    var-files:
+        - tfvars/live.tfvars
+
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    repos-libraries:
+        path: ./repos/libraries
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+    repos-services:
+        path: ./repos/services
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
