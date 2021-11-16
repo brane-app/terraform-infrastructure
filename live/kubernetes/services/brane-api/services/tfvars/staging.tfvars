@@ -1,5 +1,6 @@
-environment     = "staging"
-app             = "brane"
+app         = "brane"
+environment = "staging"
+
 image_namespace = "public.ecr.aws/v6g1e4z1"
 
 

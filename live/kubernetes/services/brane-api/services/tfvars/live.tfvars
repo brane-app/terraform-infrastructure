@@ -1,5 +1,6 @@
-app             = "brane"
-environment     = "live"
+app         = "brane"
+environment = "live"
+
 image_namespace = "public.ecr.aws/v6g1e4z1"
 
 services = {
