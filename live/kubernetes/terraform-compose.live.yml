@@ -78,4 +78,4 @@ services:
         depends-on:
             - namespace
             - ferrothorn
-            - api-database
+            - api-services
