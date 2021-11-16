@@ -1,7 +1,7 @@
 module "service_repo" {
   for_each = var.services
 
-  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/github/repo/service?ref=feat/kubernetes-aws"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/github/repo/service?ref=master"
 
   service_name     = each.value
   repo_description = "The ${each.value} ${var.app} microservice"

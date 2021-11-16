@@ -1,5 +1,5 @@
 module "enforcer" {
-  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/service/database-enforcer?ref=feat/kubernetes"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/service/database-enforcer?ref=master"
 
   database_address  = data.terraform_remote_state.database.outputs.address
   database_port     = data.terraform_remote_state.database.outputs.port

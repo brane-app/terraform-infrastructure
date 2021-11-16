@@ -1,5 +1,5 @@
 module "database" {
-  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/database?ref=feat/kubernetes"
+  source = "git::ssh://git@github.com/brane-app/terraform-infrastructure.git//modules/kubernetes/database?ref=master"
 
   name        = "brane-api"
   app         = var.app
