@@ -11,7 +11,7 @@ services = {
   "content-giver" : { image : "brane-content-giver-service", path : "/content" }
   "feed-giver" : { image : "brane-feed-giver-service", path : "/feed" }
   "report" : { image : "brane-report-service", path : "/report" }
-  "self" : { image : "brane-self-service", path : "/self" }
+  "self" : { image : "brane-self-service", path : "/me" }
   "user-create" : { image : "brane-user-create-service", path : "/user" }
   "user-giver" : { image : "brane-user-giver-service", path : "/user" }
 }
