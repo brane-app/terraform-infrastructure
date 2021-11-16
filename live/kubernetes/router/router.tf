@@ -6,22 +6,17 @@ resource "kubernetes_ingress" "router" {
   }
 
   spec {
-    backend {
-      service_name = kubernetes_service.traefik.metadata[0].name
-      service_port = local.traefik_port
-    }
+    rule {
+      http {
+        dynamic "path" {
+          for_each = data.terraform_remote_state.services.outputs.routes
 
-    dynamic "rule" {
-      for_each = data.terraform_remote_state.services.outputs.routes
-
-      content {
-        http {
-          path {
-            path = rule.value.path
+          content {
+            path = path.value.path
 
             backend {
-              service_name = rule.value.name
-              service_port = rule.value.port
+              service_name = path.value.name
+              service_port = path.value.port
             }
           }
         }
