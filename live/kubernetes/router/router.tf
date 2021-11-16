@@ -7,21 +7,8 @@ resource "kubernetes_ingress" "router" {
 
   spec {
     backend {
-      service_name = data.terraform_remote_state.consul.outputs.address
-      service_port = data.terraform_remote_state.consul.outputs.port_http_tcp
-    }
-
-    rule {
-      http {
-        path {
-          backend {
-            service_name = data.terraform_remote_state.consul.outputs.address
-            service_port = data.terraform_remote_state.consul.outputs.port_http_tcp
-          }
-
-          path = "/"
-        }
-      }
+      service_name = kubernetes_service.traefik.metadata[0].name
+      service_port = local.traefik_port
     }
   }
 }

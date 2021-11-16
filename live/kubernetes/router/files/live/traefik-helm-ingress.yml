@@ -1,0 +1,9 @@
+ingressRoute:
+    dashboard:
+        enabled: true
+        annotations:
+            "traefik.ingress.kubernetes.io/router.tls": "false"
+
+additionalArguments:
+    - "--log.level=INFO"
+    - "--ping"
