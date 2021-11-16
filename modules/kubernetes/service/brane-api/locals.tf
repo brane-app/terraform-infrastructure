@@ -8,5 +8,6 @@ locals {
     app         = var.app,
     environment = var.environment,
     resource    = local.prefix,
+    service     = var.service,
   }
 }
