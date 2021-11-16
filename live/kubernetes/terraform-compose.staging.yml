@@ -63,3 +63,18 @@ services:
             - namespace
             - api-database
             - database-enforcer
+
+    router:
+        path: ./router
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
+            - ferrothorn
+            - api-database

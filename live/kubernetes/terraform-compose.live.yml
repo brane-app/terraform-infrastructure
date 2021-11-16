@@ -59,8 +59,17 @@ services:
         var-files:
             - tfvars/live.tfvars
 
+    router:
+        path: ./router
+        reconfigure: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
         depends-on:
             - namespace
             - ferrothorn
             - api-database
-            - database-enforcer
