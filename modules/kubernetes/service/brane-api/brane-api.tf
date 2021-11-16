@@ -47,6 +47,11 @@ resource "kubernetes_deployment" "service" {
           }
 
           env {
+            name  = "PATH_PREFIX"
+            value = var.service_path_prefix
+          }
+
+          env {
             name  = "FERROTHORN_HOST"
             value = var.ferrothorn_host
           }
