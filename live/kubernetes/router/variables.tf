@@ -18,16 +18,6 @@ variable "cluster_state_profile" {
   type        = string
 }
 
-variable "helm_chart_name" {
-  description = "Name of the helm chart to deploy"
-  type        = string
-}
-
-variable "helm_chart_source" {
-  description = "Location of the deployed helm chart"
-  type        = string
-}
-
 variable "traefik_image" {
   description = "Traefik docker image to deploy"
   type        = string
