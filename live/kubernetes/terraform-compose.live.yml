@@ -9,19 +9,6 @@ services:
         var-files:
             - tfvars/live.tfvars
 
-    ferrothorn:
-        path: ./services/ferrothorn
-        reconfigure: true
-
-        backend-configs:
-            - backend/live.tfvars
-
-        var-files:
-            - tfvars/live.tfvars
-
-        depends-on:
-            - namespace
-
     api-database:
         path: ./services/brane-api/database
         reconfigure: true
@@ -33,6 +20,20 @@ services:
             - tfvars/live.tfvars
 
         depends-on:
+            - namespace
+
+    ferrothorn:
+        path: ./services/ferrothorn
+        reconfigure: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - api-database
             - namespace
 
     database-enforcer:
@@ -58,6 +59,11 @@ services:
 
         var-files:
             - tfvars/live.tfvars
+
+        depends-on:
+            - ferrothorn
+            - api-database
+            - database-enforcer
 
     router:
         path: ./router
