@@ -61,5 +61,6 @@ services:
 
         depends-on:
             - namespace
+            - ferrothorn
             - api-database
             - database-enforcer
