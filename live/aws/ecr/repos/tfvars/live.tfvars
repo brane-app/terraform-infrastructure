@@ -2,13 +2,11 @@ services = [
   "auth",
   "bans",
   "check",
-  "content-create",
-  "content-giver",
-  "feed-giver",
+  "content",
+  "feed",
   "report",
   "self",
-  "user-create",
-  "user-giver",
+  "user",
 
   "database-enforcer",
 ]
