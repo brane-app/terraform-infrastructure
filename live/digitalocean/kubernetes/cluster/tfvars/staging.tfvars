@@ -1,3 +1,8 @@
+project_state_bucket  = "brane-staging-digitalocean-terraform-state"
+project_state_key     = "project.tfstate"
+project_state_region  = "us-east-1"
+project_state_profile = "gas"
+
 region = "nyc1"
 
 cluster_version_prefix   = "1.21."
