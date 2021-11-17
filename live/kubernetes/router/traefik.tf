@@ -10,9 +10,17 @@ resource "kubernetes_service" "traefik" {
     selector = local.labels
 
     port {
+      name        = "http"
       protocol    = "TCP"
-      port        = local.traefik_port
+      port        = local.traefik_port_http
       target_port = 80
+    }
+
+    port {
+      name        = "https"
+      protocol    = "TCP"
+      port        = local.traefik_port_https
+      target_port = 443
     }
   }
 }
@@ -43,6 +51,16 @@ resource "kubernetes_deployment" "traefik" {
           args = [
             "--providers.kubernetesingress=true",
             "--providers.kubernetesingress.labelselector=app=${var.app}",
+            "--providers.kubernetesingress.labelselector=environment=${var.environment}",
+
+            "--entrypoints.http.address=:80",
+            "--entrypoints.https.address=:443",
+
+            "--entrypoints.http.http.redirections.entryPoint.to=https",
+            "--entrypoints.http.http.redirections.entryPoint.scheme=https",
+            "--entrypoints.http.http.redirections.entrypoint.permanent=true",
+
+            "--entryPoints.https.http.tls=true",
           ]
         }
       }

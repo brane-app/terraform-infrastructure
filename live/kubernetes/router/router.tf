@@ -22,5 +22,9 @@ resource "kubernetes_ingress" "router" {
         }
       }
     }
+
+    tls {
+      secret_name = kubernetes_secret.ssl.metadata[0].name
+    }
   }
 }
