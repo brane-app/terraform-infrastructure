@@ -10,6 +10,15 @@ domain_prefix_api = [
   "imonke",
 ]
 
+domain_target_mx = [
+  "fwd1.porkbun.com.",
+  "fwd2.porkbun.com.",
+]
+
+domain_target_txt = [
+  "v=spf1 mx ~all",
+]
+
 router_state_suffix = "brane-router-live"
 
 app         = "brane"

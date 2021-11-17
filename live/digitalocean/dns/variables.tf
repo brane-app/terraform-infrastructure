@@ -23,6 +23,18 @@ variable "domain_name" {
   type        = string
 }
 
+variable "domain_target_mx" {
+  description = "MX records to include"
+  type        = set(string)
+  default     = []
+}
+
+variable "domain_target_txt" {
+  description = "TXT records to include"
+  type        = set(string)
+  default     = []
+}
+
 variable "domain_prefix_api" {
   description = "Prefix on the domain name that should route to the project API"
   type        = set(string)
