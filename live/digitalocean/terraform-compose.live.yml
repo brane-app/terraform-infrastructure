@@ -16,6 +16,16 @@ services:
         var-files:
             - tfvars/live.tfvars
 
+    project:
+        path: ./project
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
     kubernetes-cluster:
         path: ./kubernetes/cluster
 
@@ -25,6 +35,9 @@ services:
         var-files:
             - tfvars/live.tfvars
             - tfvars/secret.tfvars
+
+        depends-on:
+            - project
 
 # NOTE: this relies on the kubernetes router ( ../kubernetes/router ) existing
 #       since it gets the ip of the load balancer that it creates
@@ -37,3 +50,6 @@ services:
         var-files:
             - tfvars/live.tfvars
             - tfvars/secret.tfvars
+
+        depends-on:
+            - project
