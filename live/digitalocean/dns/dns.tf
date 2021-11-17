@@ -4,8 +4,10 @@ resource "digitalocean_domain" "root" {
 
 
 resource "digitalocean_record" "api" {
+  for_each = var.domain_prefix_api
+
   domain = digitalocean_domain.root.name
-  name   = var.domain_prefix_api
+  name   = each.value
   type   = "A"
   value  = data.terraform_remote_state.router.outputs.balancer_ip
 }

@@ -25,7 +25,7 @@ variable "domain_name" {
 
 variable "domain_prefix_api" {
   description = "Prefix on the domain name that should route to the project API"
-  type        = string
+  type        = set(string)
 }
 
 variable "router_state_suffix" {
