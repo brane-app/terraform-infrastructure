@@ -65,8 +65,8 @@ services:
             - api-database
             - database-enforcer
 
-    router:
-        path: ./router
+    ingress:
+        path: ./router/ingress
         reconfigure: true
 
         backend-configs:
