@@ -7,12 +7,22 @@ output "token" {
   sensitive = true
 }
 
-output "ca_certificate" {
+output "cluster_ca_certificate" {
   value     = digitalocean_kubernetes_cluster.cluster.kube_config[0].cluster_ca_certificate
   sensitive = true
 }
 
-output "ca_certificate_base64" {
-  value     = base64encode(digitalocean_kubernetes_cluster.cluster.kube_config[0].cluster_ca_certificate)
+output "client_certificate" {
+  value     = digitalocean_kubernetes_cluster.cluster.kube_config[0].client_certificate
   sensitive = true
 }
+
+output "client_key" {
+  value     = digitalocean_kubernetes_cluster.cluster.kube_config[0].client_key
+  sensitive = true
+}
+
+/*
+token
+host  ?
+*/
