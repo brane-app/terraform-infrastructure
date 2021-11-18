@@ -1,0 +1,55 @@
+globals:
+    backend-configs:
+        - backend/staging.tfvars
+
+    var-files:
+        - tfvars/staging.tfvars
+
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+    project:
+        path: ./project
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+            - tfvars/secret.tfvars
+
+    kubernetes-cluster:
+        path: ./kubernetes/cluster
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - project
+
+# NOTE: this relies on the kubernetes router ( ../kubernetes/router ) existing
+#       since it gets the ip of the load balancer that it creates
+    dns:
+        path: ./dns
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - project
