@@ -39,7 +39,7 @@ services:
         depends-on:
             - project
 
-# NOTE: this relies on the kubernetes router ( ../kubernetes/router ) existing
+# NOTE: this relies on traefik ( ../kubernetes/router/traefik ) existing
 #       since it gets the ip of the load balancer that it creates
     dns:
         path: ./dns
