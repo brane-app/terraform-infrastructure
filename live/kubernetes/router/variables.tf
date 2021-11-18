@@ -1,8 +1,3 @@
-variable "acme_email_address" {
-  description = "Email address to create an acme registration with"
-  type        = string
-}
-
 variable "cluster_state_bucket" {
   description = "S3 bucket holding kubernetes cluster state"
   type        = string
@@ -23,34 +18,24 @@ variable "cluster_state_profile" {
   type        = string
 }
 
-variable "dns_state_bucket" {
-  description = "S3 bucket holding DigitalOcean dns state"
+variable "acme_state_bucket" {
+  description = "S3 bucket holding acme state"
   type        = string
 }
 
-variable "dns_state_key" {
-  description = "Key in the s3 bucket holding DigitalOcean dns state"
+variable "acme_state_key" {
+  description = "Key in the s3 bucket holding acme state"
   type        = string
 }
 
-variable "dns_state_region" {
-  description = "Region where the DigitalOcean dns state bucket lives"
+variable "acme_state_region" {
+  description = "Region where the acme state bucket lives"
   type        = string
 }
 
-variable "dns_state_profile" {
-  description = "AWS profile alias owning the state bucket"
+variable "acme_state_profile" {
+  description = "AWS profile alias owning the acme state bucket"
   type        = string
-}
-
-variable "ssl_dns_provider" {
-  description = "DNS provider for ssl challenges"
-  type        = string
-}
-
-variable "ssl_dns_config" {
-  description = "DNS provider config"
-  type        = map(string)
 }
 
 variable "traefik_image" {

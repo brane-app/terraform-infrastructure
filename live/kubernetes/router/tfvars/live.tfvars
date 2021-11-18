@@ -1,15 +1,11 @@
-acme_email_address = "mail@gastrodon.io"
-
-ssl_dns_provider = "digitalocean"
-
 traefik_image     = "traefik"
 traefik_image_tag = "latest"
 traefik_replicas  = 2
 
-dns_state_bucket  = "brane-live-digitalocean-terraform-state"
-dns_state_key     = "dns.tfstate"
-dns_state_region  = "us-east-1"
-dns_state_profile = "gas"
+acme_state_bucket  = "brane-live-acme-terraform-state"
+acme_state_key     = "certs.tfstate"
+acme_state_region  = "us-east-1"
+acme_state_profile = "gas"
 
 cluster_state_bucket  = "brane-live-digitalocean-terraform-state"
 cluster_state_key     = "kubernetes/cluster.tfstate"

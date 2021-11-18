@@ -1,1 +1,1 @@
-secret_suffix = "brane-router-live"
+secret_suffix = "brane-router-ingress-live"

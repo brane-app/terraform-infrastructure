@@ -27,13 +27,13 @@ data "terraform_remote_state" "cluster" {
   }
 }
 
-data "terraform_remote_state" "dns" {
+data "terraform_remote_state" "acme" {
   backend = "s3"
 
   config = {
-    bucket  = var.dns_state_bucket
-    key     = var.dns_state_key
-    region  = var.dns_state_region
-    profile = var.dns_state_profile
+    bucket  = var.acme_state_bucket
+    key     = var.acme_state_key
+    region  = var.acme_state_region
+    profile = var.acme_state_profile
   }
 }

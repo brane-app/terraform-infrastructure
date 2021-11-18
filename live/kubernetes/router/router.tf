@@ -1,3 +1,16 @@
+resource "kubernetes_secret" "ssl" {
+  metadata {
+    name      = "${var.app}-${var.environment}-router-tls"
+    namespace = data.terraform_remote_state.namespace.outputs.namespace_name
+    labels    = local.labels
+  }
+
+  data = {
+    "tls.crt" = data.terraform_remote_state.acme.outputs.ssl_certificate
+    "tls.key" = data.terraform_remote_state.acme.outputs.ssl_key
+  }
+}
+
 resource "kubernetes_ingress" "router" {
   metadata {
     name      = local.prefix
