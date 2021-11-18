@@ -79,3 +79,16 @@ services:
             - namespace
             - ferrothorn
             - api-services
+
+    traefik:
+        path: ./router/traefik
+        reconfigure: true
+
+        backend-configs:
+            - backend/staging.tfvars
+
+        var-files:
+            - tfvars/staging.tfvars
+
+        depends-on:
+            - namespace
