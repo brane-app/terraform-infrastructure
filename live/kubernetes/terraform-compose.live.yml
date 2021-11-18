@@ -33,7 +33,6 @@ services:
             - tfvars/live.tfvars
 
         depends-on:
-            - api-database
             - namespace
 
     database-enforcer:
