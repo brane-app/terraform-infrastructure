@@ -1,3 +1,5 @@
+traefik_state_suffix = "brane-router-traefik-live"
+
 project_state_bucket  = "brane-live-digitalocean-terraform-state"
 project_state_key     = "project.tfstate"
 project_state_region  = "us-east-1"
@@ -18,8 +20,6 @@ domain_target_mx = [
 domain_target_txt = [
   "v=spf1 mx ~all",
 ]
-
-router_state_suffix = "brane-router-live"
 
 app         = "brane"
 environment = "live"

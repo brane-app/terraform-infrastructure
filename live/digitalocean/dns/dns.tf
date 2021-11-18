@@ -8,7 +8,7 @@ resource "digitalocean_record" "api" {
   domain = digitalocean_domain.root.name
   name   = each.value
   type   = "A"
-  value  = data.terraform_remote_state.router.outputs.balancer_ip
+  value  = data.terraform_remote_state.traefik.outputs.balancer_ip
 }
 
 resource "digitalocean_record" "mx" {

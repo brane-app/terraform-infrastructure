@@ -40,8 +40,8 @@ variable "domain_prefix_api" {
   type        = set(string)
 }
 
-variable "router_state_suffix" {
-  description = "Secret suffix holding kubernetes router state"
+variable "traefik_state_suffix" {
+  description = "Secret suffix holding kubernetes traefik state"
   type        = string
 }
 

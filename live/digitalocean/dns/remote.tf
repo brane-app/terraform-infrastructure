@@ -9,11 +9,11 @@ data "terraform_remote_state" "project" {
   }
 }
 
-data "terraform_remote_state" "router" {
+data "terraform_remote_state" "traefik" {
   backend = "kubernetes"
 
   config = {
     load_config_file = true
-    secret_suffix    = var.router_state_suffix
+    secret_suffix    = var.traefik_state_suffix
   }
 }
