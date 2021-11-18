@@ -1,7 +1,3 @@
-traefik_image     = "traefik"
-traefik_image_tag = "latest"
-traefik_replicas  = 2
-
 acme_state_bucket  = "brane-live-acme-terraform-state"
 acme_state_key     = "certs.tfstate"
 acme_state_region  = "us-east-1"
