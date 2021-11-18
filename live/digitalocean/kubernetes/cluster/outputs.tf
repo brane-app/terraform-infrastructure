@@ -21,8 +21,3 @@ output "client_key" {
   value     = digitalocean_kubernetes_cluster.cluster.kube_config[0].client_key
   sensitive = true
 }
-
-/*
-token
-host  ?
-*/
