@@ -1,9 +1,13 @@
-traefik_state_suffix = "brane-router-traefik-live"
+project_state_key = "project.tfstate"
+traefik_state_key = "router/traefik.tfstate"
 
 project_state_bucket  = "brane-live-digitalocean-terraform-state"
-project_state_key     = "project.tfstate"
 project_state_region  = "us-east-1"
 project_state_profile = "gas"
+
+traefik_state_bucket  = "brane-live-kubernetes-terraform-state"
+traefik_state_profile = "gas"
+traefik_state_region  = "us-east-1"
 
 domain_name = "gastrodon.io"
 

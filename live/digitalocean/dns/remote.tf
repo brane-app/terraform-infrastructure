@@ -10,10 +10,12 @@ data "terraform_remote_state" "project" {
 }
 
 data "terraform_remote_state" "traefik" {
-  backend = "kubernetes"
+  backend = "s3"
 
   config = {
-    load_config_file = true
-    secret_suffix    = var.traefik_state_suffix
+    key     = var.traefik_state_key
+    bucket  = var.traefik_state_bucket
+    profile = var.traefik_state_profile
+    region  = var.traefik_state_region
   }
 }
