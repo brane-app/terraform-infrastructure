@@ -3,19 +3,29 @@ variable "acme_server_url" {
   type        = string
 }
 
+variable "dns_state_bucket" {
+  description = "S3 bucket holding dns state"
+  type        = string
+}
+
+variable "dns_state_key" {
+  description = "Bucket key holding dns state"
+  type        = string
+}
+
+variable "dns_state_region" {
+  description = "Region where the state bucket lives"
+  type        = string
+}
+
+variable "dns_state_profile" {
+  description = "Profile where the the state bucket lives"
+  type        = string
+}
+
 variable "email_address" {
   description = "Email address to create an acme registration with"
   type        = string
-}
-
-variable "domain_name" {
-  description = "Domain name to create records for"
-  type        = string
-}
-
-variable "domain_prefix" {
-  description = "Domain prefixes to create records for"
-  type        = set(string)
 }
 
 variable "challenge_provider" {

@@ -9,11 +9,11 @@ resource "acme_registration" "ssl" {
 
 resource "acme_certificate" "ssl" {
   account_key_pem = tls_private_key.ssl.private_key_pem
-  common_name     = var.domain_name
+  common_name     = data.terraform_remote_state.dns.outputs.domain_name
 
   subject_alternative_names = [
-    for it in var.domain_prefix :
-    "${it}.${var.domain_name}"
+    for it in data.terraform_remote_state.dns.outputs.domain_prefix_all :
+    "${it}.${data.terraform_remote_state.dns.outputs.domain_name}"
   ]
 
   dns_challenge {
