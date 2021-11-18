@@ -59,6 +59,7 @@ services:
 
         var-files:
             - tfvars/live.tfvars
+            - tfvars/live-dockerhub.tfvars
 
         depends-on:
             - ferrothorn

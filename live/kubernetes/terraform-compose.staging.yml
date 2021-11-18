@@ -59,6 +59,7 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+            - tfvars/staging-dockerhub.tfvars
 
         depends-on:
             - namespace
