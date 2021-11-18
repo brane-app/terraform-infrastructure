@@ -1,10 +1,30 @@
-variable "cluster_state_bucket" {
-  description = "S3 bucket holding kubernetes cluster state"
+variable "acme_state_key" {
+  description = "Key in the s3 bucket holding acme state"
+  type        = string
+}
+
+variable "acme_state_bucket" {
+  description = "S3 bucket holding acme state"
+  type        = string
+}
+
+variable "acme_state_region" {
+  description = "Region where the acme state bucket lives"
+  type        = string
+}
+
+variable "acme_state_profile" {
+  description = "AWS profile alias owning the acme state bucket"
   type        = string
 }
 
 variable "cluster_state_key" {
   description = "Key in the s3 bucket holding kubernetes cluster state"
+  type        = string
+}
+
+variable "cluster_state_bucket" {
+  description = "S3 bucket holding kubernetes cluster state"
   type        = string
 }
 
@@ -18,23 +38,28 @@ variable "cluster_state_profile" {
   type        = string
 }
 
-variable "acme_state_bucket" {
-  description = "S3 bucket holding acme state"
+variable "namespace_state_key" {
+  description = "Key in the s3 bucket holding state"
   type        = string
 }
 
-variable "acme_state_key" {
-  description = "Key in the s3 bucket holding acme state"
+variable "services_state_key" {
+  description = "Key in the s3 bucket holding state"
   type        = string
 }
 
-variable "acme_state_region" {
-  description = "Region where the acme state bucket lives"
+variable "kube_state_bucket" {
+  description = "S3 bucket holding state"
   type        = string
 }
 
-variable "acme_state_profile" {
-  description = "AWS profile alias owning the acme state bucket"
+variable "kube_state_region" {
+  description = "Region where the state bucket lives"
+  type        = string
+}
+
+variable "kube_state_profile" {
+  description = "AWS profile alias owning the state bucket"
   type        = string
 }
 

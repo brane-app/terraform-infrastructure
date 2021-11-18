@@ -18,16 +18,6 @@ variable "cluster_state_profile" {
   type        = string
 }
 
-variable "database_state_key" {
-  description = "Database service state key"
-  type        = string
-}
-
-variable "ferrothorn_state_key" {
-  description = "Ferrothorn service state key"
-  type        = string
-}
-
 variable "namespace_state_key" {
   description = "Namespace state key"
   type        = string
@@ -48,15 +38,6 @@ variable "kube_state_profile" {
   type        = string
 }
 
-variable "image_namespace" {
-  description = "Namespace to prefix image names with"
-  type        = string
-}
-
-variable "services" {
-  description = "A collection of servic definitions to deploy"
-  type        = any
-}
 
 variable "app" {
   description = "Application we're deploying resources for"

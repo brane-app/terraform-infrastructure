@@ -1,1 +1,1 @@
-secret_suffix = "brane-router-traefik-live"
+bucket = "brane-live-kubernetes-terraform-state"

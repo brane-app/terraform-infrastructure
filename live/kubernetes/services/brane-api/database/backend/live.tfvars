@@ -1,1 +1,1 @@
-secret_suffix = "brane-services-brane-api-database-live"
+bucket = "brane-live-kubernetes-terraform-state"
