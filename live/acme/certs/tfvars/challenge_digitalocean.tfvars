@@ -1,0 +1,1 @@
+challenge_provider = "digitalocean"

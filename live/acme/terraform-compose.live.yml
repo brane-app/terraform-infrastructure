@@ -1,0 +1,25 @@
+services:
+    state-bucket:
+        path: ./s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    certs:
+        path: ./certs
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/challenge_digitalocean.tfvars
+            - tfvars/challenge_digitalocean_secret.tfvars
+
+        depends-on:
+            - state-bucket
