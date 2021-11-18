@@ -1,4 +1,4 @@
-router_state_suffix = "brane-router-traefik-staging"
+traefik_state_suffix = "brane-router-traefik-staging"
 
 project_state_bucket  = "brane-staging-digitalocean-terraform-state"
 project_state_key     = "project.tfstate"
