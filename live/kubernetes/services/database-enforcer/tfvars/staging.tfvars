@@ -10,7 +10,8 @@ kube_state_bucket  = "brane-staging-kubernetes-terraform-state"
 kube_state_region  = "us-east-1"
 kube_state_profile = "gas"
 
+image     = "gastrodon/brane-database-enforcer"
+image_tag = "latest"
+
 app         = "brane"
 environment = "staging"
-image       = "public.ecr.aws/v6g1e4z1/brane-database-enforcer-service" # TODO
-image_tag   = "latest"
