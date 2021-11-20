@@ -3,22 +3,32 @@ variable "acme_server_url" {
   type        = string
 }
 
-variable "dns_state_bucket" {
-  description = "S3 bucket holding dns state"
-  type        = string
-}
-
-variable "dns_state_key" {
+variable "dns_api_state_key" {
   description = "Bucket key holding dns state"
   type        = string
 }
 
-variable "dns_state_region" {
+variable "dns_root_state_key" {
+  description = "Bucket key holding dns state"
+  type        = string
+}
+
+variable "ocean_state_bucket" {
+  description = "S3 bucket holding dns state"
+  type        = string
+}
+
+variable "ocean_state_bucket_live" {
+  description = "S3 bucket holding dns live state"
+  type        = string
+}
+
+variable "ocean_state_region" {
   description = "Region where the state bucket lives"
   type        = string
 }
 
-variable "dns_state_profile" {
+variable "ocean_state_profile" {
   description = "Profile where the the state bucket lives"
   type        = string
 }
