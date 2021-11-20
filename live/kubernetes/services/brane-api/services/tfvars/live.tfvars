@@ -11,5 +11,7 @@ kube_state_bucket  = "brane-live-kubernetes-terraform-state"
 kube_state_region  = "us-east-1"
 kube_state_profile = "gas"
 
+image_tag = "latest"
+
 app         = "brane"
 environment = "live"

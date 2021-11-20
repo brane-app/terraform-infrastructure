@@ -17,6 +17,6 @@ module "brane_api" {
 
   service             = each.key
   service_image       = "${var.image_namespace}/${each.value["image"]}"
-  service_image_label = "latest"
+  service_image_label = var.image_tag
   service_path_prefix = var.services[each.key]["path"]
 }
