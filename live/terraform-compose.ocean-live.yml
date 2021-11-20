@@ -1,0 +1,207 @@
+services:
+    ocean-state-bucket:
+        path: ./digitalocean/s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    kube-state-bucket:
+        path: ./kubernetes/s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    acme-state-bucket:
+        path: ./acme/s3/state-bucket
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+    ocean-project:
+        path: ./digitalocean/project
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+    ocean-kubernetes-cluster:
+        path: ./digitalocean/kubernetes/cluster
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - ocean-project
+
+    ocean-dns-root:
+        path: ./digitalocean/dns/root
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - ocean-project
+            - kube-service-traefik
+
+    ocean-dns-email:
+        path: ./digitalocean/dns/email
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - ocean-dns-root
+            - kube-service-traefik
+
+    ocean-dns-api:
+        path: ./digitalocean/dns/api
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - ocean-dns-root
+            - kube-service-traefik
+
+    kube-namespace:
+        path: ./kubernetes/namespace
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-state-bucket
+            - ocean-kubernetes-cluster
+
+    kube-api-database:
+        path: ./kubernetes/services/brane-api/database
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-namespace
+
+    kube-service-ferrothorn:
+        path: ./kubernetes/services/ferrothorn
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-namespace
+
+    kube-service-traefik:
+        path: ./kubernetes/router/traefik
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-namespace
+
+    kube-service-database-enforcer:
+        path: ./kubernetes/services/database-enforcer
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-namespace
+            - kube-api-database
+
+    kube-api-services:
+        path: ./kubernetes/services/brane-api/services
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/live-dockerhub.tfvars
+
+        depends-on:
+            - kube-namespace
+            - kube-service-ferrothorn
+            - kube-api-database
+            - kube-service-database-enforcer
+
+    acme-certs:
+        path: ./acme/certs
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/live_challenge_digitalocean.tfvars
+            - tfvars/live_challenge_digitalocean_secret.tfvars
+
+        depends-on:
+            - acme-state-bucket
+            - ocean-dns-root
+            - ocean-dns-api
+
+    kube-ingress:
+        path: ./kubernetes/router/ingress
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+
+        depends-on:
+            - kube-namespace
+            - kube-service-ferrothorn
+            - kube-api-services
+            - acme-certs
