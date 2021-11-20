@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    key     = "dns.tfstate"
+    key     = "dns/root.tfstate"
     profile = "gas"
     region  = "us-east-1"
   }

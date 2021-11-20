@@ -1,19 +1,29 @@
-variable "project_state_bucket" {
-  description = "S3 bucket holding DigitalOcean project state"
-  type        = string
-}
-
 variable "project_state_key" {
-  description = "Key in the s3 bucket holding DigitalOcean project state"
+  description = "Key in the s3 bucket holding state"
   type        = string
 }
 
-variable "project_state_region" {
-  description = "Region where the DigitalOcean project state bucket lives"
+variable "root_state_key" {
+  description = "Key in the s3 bucket holding state"
   type        = string
 }
 
-variable "project_state_profile" {
+variable "ocean_state_bucket" {
+  description = "S3 bucket holding state"
+  type        = string
+}
+
+variable "ocean_state_bucket_live" {
+  description = "S3 bucket holding live state"
+  type        = string
+}
+
+variable "ocean_state_region" {
+  description = "Region where the state bucket lives"
+  type        = string
+}
+
+variable "ocean_state_profile" {
   description = "AWS profile alias owning the state bucket"
   type        = string
 }
@@ -38,24 +48,7 @@ variable "traefik_state_profile" {
   type        = string
 }
 
-variable "domain_name" {
-  description = "Domain name to create records for"
-  type        = string
-}
-
-variable "domain_target_mx" {
-  description = "MX records to include"
-  type        = set(string)
-  default     = []
-}
-
-variable "domain_target_txt" {
-  description = "TXT records to include"
-  type        = set(string)
-  default     = []
-}
-
-variable "domain_prefix_api" {
+variable "domain_prefix" {
   description = "Prefix on the domain name that should route to the project API"
   type        = set(string)
 }

@@ -39,17 +39,47 @@ services:
         depends-on:
             - project
 
-# NOTE: this relies on the kubernetes router ( ../kubernetes/router ) existing
-#       since it gets the ip of the load balancer that it creates
-    dns:
-        path: ./dns
+    dns-root:
+        path: ./dns/root
+        no-destroy: true
 
         backend-configs:
-            - backend/staging.tfvars
+            - backend/live.tfvars
 
         var-files:
-            - tfvars/staging.tfvars
+            - tfvars/live.tfvars
             - tfvars/secret.tfvars
 
         depends-on:
             - project
+
+    dns-email:
+        path: ./dns/email
+        no-destroy: true
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - project
+            - dns-root
+
+# NOTE: this relies on traefik ( ../kubernetes/router/traefik ) existing
+#       since it gets the ip of the load balancer that it creates
+    dns-api:
+        path: ./dns/api
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - project
+            - dns-root
