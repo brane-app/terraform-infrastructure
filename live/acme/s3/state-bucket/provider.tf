@@ -22,7 +22,7 @@ provider "aws" {
     tags = {
       app         = var.app
       environment = var.environment
-      source      = "live/github/s3/state-bucket"
+      source      = "live/acme/s3/state-bucket"
     }
   }
 }
