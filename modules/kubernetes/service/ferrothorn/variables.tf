@@ -25,7 +25,7 @@ variable "ferrothorn_image_tag" {
 variable "ferrothorn_replicas" {
   description = "Number of ferrothorn replicas to launch"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "app" {
