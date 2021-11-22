@@ -12,7 +12,7 @@ module "brane_api" {
   database_user     = data.terraform_remote_state.database.outputs.user
   database_password = data.terraform_remote_state.database.outputs.password
 
-  ferrothorn_host   = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_address
+  ferrothorn_host   = "http://${data.terraform_remote_state.ferrothorn.outputs.ferrothorn_address}"
   ferrothorn_secret = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_secret
 
   service             = each.key
