@@ -53,6 +53,11 @@ variable "image_namespace" {
   type        = string
 }
 
+variable "image_tag" {
+  description = "Microservice image tag to deploy"
+  type        = string
+}
+
 variable "services" {
   description = "A collection of servic definitions to deploy"
   type        = any
