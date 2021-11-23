@@ -57,6 +57,11 @@ resource "kubernetes_deployment" "service" {
           }
 
           env {
+            name  = "FERROTHORN_MASK"
+            value = var.ferrothorn_mask
+          }
+
+          env {
             name  = "FERROTHORN_SECRET"
             value = var.ferrothorn_secret
           }

@@ -29,6 +29,12 @@ variable "ferrothorn_host" {
   type        = string
 }
 
+variable "ferrothorn_mask" {
+  description = "Ferrothorn URL to return rather than an internal host"
+  type        = string
+  default     = ""
+}
+
 variable "ferrothorn_secret" {
   description = "Ferrothorn api secret key"
   type        = string
