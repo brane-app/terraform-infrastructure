@@ -12,7 +12,7 @@ resource "acme_certificate" "ssl" {
   common_name     = data.terraform_remote_state.dns_root.outputs.domain_name
 
   subject_alternative_names = [
-    for it in data.terraform_remote_state.dns_api.outputs.domain_prefix :
+    for it in local.dns_prefix :
     "${it}.${data.terraform_remote_state.dns_root.outputs.domain_name}"
   ]
 

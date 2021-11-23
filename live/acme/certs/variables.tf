@@ -8,6 +8,11 @@ variable "dns_api_state_key" {
   type        = string
 }
 
+variable "dns_file_state_key" {
+  description = "Bucket key holding dns state"
+  type        = string
+}
+
 variable "dns_root_state_key" {
   description = "Bucket key holding dns state"
   type        = string

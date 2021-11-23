@@ -19,3 +19,14 @@ data "terraform_remote_state" "dns_api" {
     profile = var.ocean_state_profile
   }
 }
+
+data "terraform_remote_state" "dns_file" {
+  backend = "s3"
+
+  config = {
+    key     = var.dns_file_state_key
+    bucket  = var.ocean_state_bucket
+    region  = var.ocean_state_region
+    profile = var.ocean_state_profile
+  }
+}
