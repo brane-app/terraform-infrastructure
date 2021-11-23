@@ -3,9 +3,20 @@ data "terraform_remote_state" "cluster" {
 
   config = {
     key     = var.cluster_state_key
-    bucket  = var.cluster_state_bucket
-    region  = var.cluster_state_region
-    profile = var.cluster_state_profile
+    bucket  = var.ocean_state_bucket
+    region  = var.ocean_state_region
+    profile = var.ocean_state_profile
+  }
+}
+
+data "terraform_remote_state" "dns" {
+  backend = "s3"
+
+  config = {
+    key     = var.dns_state_key
+    bucket  = var.ocean_state_bucket
+    region  = var.ocean_state_region
+    profile = var.ocean_state_profile
   }
 }
 
