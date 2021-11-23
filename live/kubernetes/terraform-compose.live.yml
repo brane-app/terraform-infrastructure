@@ -59,6 +59,7 @@ services:
         var-files:
             - tfvars/live.tfvars
             - tfvars/live-dockerhub.tfvars
+            - tfvars/live-backend-digitalocean.tfvars
 
         depends-on:
             - ferrothorn
@@ -74,6 +75,7 @@ services:
 
         var-files:
             - tfvars/live.tfvars
+            - tfvars/live-backend-digitalocean.tfvars
 
         depends-on:
             - namespace

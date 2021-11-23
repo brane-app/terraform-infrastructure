@@ -60,6 +60,7 @@ services:
         var-files:
             - tfvars/staging.tfvars
             - tfvars/staging-dockerhub.tfvars
+            - tfvars/staging-backend-digitalocean.tfvars
 
         depends-on:
             - namespace
@@ -75,6 +76,7 @@ services:
 
         var-files:
             - tfvars/staging.tfvars
+            - tfvars/staging-backend-digitalocean.tfvars
 
         depends-on:
             - namespace

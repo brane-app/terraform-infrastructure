@@ -83,3 +83,17 @@ services:
         depends-on:
             - project
             - dns-root
+
+    dns-file:
+        path: ./dns/file
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - project
+            - dns-root

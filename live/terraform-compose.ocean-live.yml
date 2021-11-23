@@ -96,6 +96,20 @@ services:
             - ocean-dns-root
             - kube-service-traefik
 
+    ocean-dns-file:
+        path: ./digitalocean/dns/file
+
+        backend-configs:
+            - backend/live.tfvars
+
+        var-files:
+            - tfvars/live.tfvars
+            - tfvars/secret.tfvars
+
+        depends-on:
+            - ocean-dns-root
+            - kube-service-traefik
+
     kube-namespace:
         path: ./kubernetes/namespace
 
@@ -167,6 +181,7 @@ services:
         var-files:
             - tfvars/live.tfvars
             - tfvars/live-dockerhub.tfvars
+            - tfvars/live-backend-digitalocean.tfvars
 
         depends-on:
             - kube-namespace
@@ -199,6 +214,7 @@ services:
 
         var-files:
             - tfvars/live.tfvars
+            - tfvars/live-backend-digitalocean.tfvars
 
         depends-on:
             - kube-namespace
