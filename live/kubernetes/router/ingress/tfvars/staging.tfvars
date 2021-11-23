@@ -17,7 +17,7 @@ kube_state_bucket  = "brane-staging-kubernetes-terraform-state"
 kube_state_region  = "us-east-1"
 kube_state_profile = "gas"
 
-prefix_api  = "api.brane.staging"
+prefix_api  = ["api.brane.staging"]
 prefix_file = "file.brane.staging"
 
 app         = "brane"

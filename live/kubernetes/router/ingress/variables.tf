@@ -90,7 +90,7 @@ variable "kube_state_profile" {
 
 variable "prefix_api" {
   description = "prefix to route the api"
-  type        = string
+  type        = set(string)
 }
 variable "prefix_file" {
   description = "prefix to route ferrothorn"

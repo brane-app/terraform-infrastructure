@@ -17,7 +17,7 @@ kube_state_bucket  = "brane-live-kubernetes-terraform-state"
 kube_state_region  = "us-east-1"
 kube_state_profile = "gas"
 
-prefix_api  = "api.brane"
+prefix_api  = ["api.brane", "imonke"]
 prefix_file = "file.brane"
 
 app         = "brane"

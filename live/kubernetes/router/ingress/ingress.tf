@@ -19,19 +19,23 @@ resource "kubernetes_ingress" "router" {
   }
 
   spec {
-    rule {
-      host = "${var.prefix_api}.${data.terraform_remote_state.dns.outputs.domain_name}"
+    dynamic "rule" {
+      for_each = var.prefix_api
 
-      http {
-        dynamic "path" {
-          for_each = data.terraform_remote_state.services.outputs.routes
+      content {
+        host = "${rule.value}.${data.terraform_remote_state.dns.outputs.domain_name}"
 
-          content {
-            path = path.value.path
+        http {
+          dynamic "path" {
+            for_each = data.terraform_remote_state.services.outputs.routes
 
-            backend {
-              service_name = path.value.name
-              service_port = path.value.port
+            content {
+              path = path.value.path
+
+              backend {
+                service_name = path.value.name
+                service_port = path.value.port
+              }
             }
           }
         }
