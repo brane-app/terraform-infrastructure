@@ -18,6 +18,26 @@ variable "acme_state_profile" {
   type        = string
 }
 
+variable "dns_state_key" {
+  description = "Key in the s3 bucket holding state"
+  type        = string
+}
+
+variable "dns_state_bucket" {
+  description = "S3 bucket holding state"
+  type        = string
+}
+
+variable "dns_state_region" {
+  description = "Region where the state bucket lives"
+  type        = string
+}
+
+variable "dns_state_profile" {
+  description = "AWS profile alias owning the state bucket"
+  type        = string
+}
+
 variable "cluster_state_key" {
   description = "Key in the s3 bucket holding kubernetes cluster state"
   type        = string
@@ -48,6 +68,11 @@ variable "services_state_key" {
   type        = string
 }
 
+variable "ferrothorn_state_key" {
+  description = "Key in the s3 bucket holding state"
+  type        = string
+}
+
 variable "kube_state_bucket" {
   description = "S3 bucket holding state"
   type        = string
@@ -60,6 +85,15 @@ variable "kube_state_region" {
 
 variable "kube_state_profile" {
   description = "AWS profile alias owning the state bucket"
+  type        = string
+}
+
+variable "prefix_api" {
+  description = "prefix to route the api"
+  type        = string
+}
+variable "prefix_file" {
+  description = "prefix to route ferrothorn"
   type        = string
 }
 

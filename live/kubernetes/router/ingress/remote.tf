@@ -9,6 +9,17 @@ data "terraform_remote_state" "acme" {
   }
 }
 
+data "terraform_remote_state" "dns" {
+  backend = "s3"
+
+  config = {
+    key     = var.dns_state_key
+    bucket  = var.dns_state_bucket
+    region  = var.dns_state_region
+    profile = var.dns_state_profile
+  }
+}
+
 data "terraform_remote_state" "cluster" {
   backend = "s3"
 
@@ -36,6 +47,17 @@ data "terraform_remote_state" "services" {
 
   config = {
     key     = var.services_state_key
+    bucket  = var.kube_state_bucket
+    region  = var.kube_state_region
+    profile = var.kube_state_profile
+  }
+}
+
+data "terraform_remote_state" "ferrothorn" {
+  backend = "s3"
+
+  config = {
+    key     = var.ferrothorn_state_key
     bucket  = var.kube_state_bucket
     region  = var.kube_state_region
     profile = var.kube_state_profile
