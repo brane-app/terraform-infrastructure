@@ -1,5 +1,5 @@
 resource "github_repository" "service" {
-  name        = "${var.library_name}-library"
+  name        = var.library_name
   description = var.repo_description
 
   license_template = var.repo_license
