@@ -1,9 +1,3 @@
-libraries = [
-  "database",
-  "tools",
-  "types",
-]
-
 rebuild_services = [
   "auth",
   "bans",
