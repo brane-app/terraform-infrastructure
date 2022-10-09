@@ -5,7 +5,7 @@ project_state_profile = "gas"
 
 region = "nyc1"
 
-cluster_version_prefix   = "1.21."
+cluster_version_prefix   = "1."
 cluster_maintenance_day  = "wednesday"
 cluster_maintenance_time = "02:00"
 

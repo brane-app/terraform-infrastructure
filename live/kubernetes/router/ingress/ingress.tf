@@ -11,7 +11,7 @@ resource "kubernetes_secret" "ssl" {
   }
 }
 
-resource "kubernetes_ingress" "router" {
+resource "kubernetes_ingress_v1" "router" {
   metadata {
     name      = local.prefix
     namespace = data.terraform_remote_state.namespace.outputs.namespace_name
@@ -33,8 +33,13 @@ resource "kubernetes_ingress" "router" {
               path = path.value.path
 
               backend {
-                service_name = path.value.name
-                service_port = path.value.port
+                service {
+                  name = path.value.name
+
+                  port {
+                    number = path.value.port
+                  }
+                }
               }
             }
           }
@@ -50,8 +55,13 @@ resource "kubernetes_ingress" "router" {
           path = "/"
 
           backend {
-            service_name = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_address
-            service_port = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_port
+            service {
+              name = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_address
+
+              port {
+                number = data.terraform_remote_state.ferrothorn.outputs.ferrothorn_port
+              }
+            }
           }
         }
       }
